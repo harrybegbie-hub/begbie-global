@@ -1,10 +1,17 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
 exports.handler = async function(event) {
   // Only allow POST
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
+
+  // Load Stripe inside handler so env var is guaranteed to be available
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) {
+    console.error('STRIPE_SECRET_KEY environment variable is not set');
+    return { statusCode: 500, body: JSON.stringify({ error: 'Stripe not configured' }) };
+  }
+
+  const stripe = require('stripe')(stripeKey);
 
   try {
     const { total, orderSummary } = JSON.parse(event.body);
@@ -24,14 +31,14 @@ exports.handler = async function(event) {
               name: 'Begbie Global — Student Arrival Package',
               description: orderSummary || 'Student Arrival Package with selected add-ons',
             },
-            unit_amount: total * 100, // Stripe works in pence
+            unit_amount: total * 100,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: 'https://www.bebbieglobal.co.uk?payment=success',
-      cancel_url:  'https://www.bebbieglobal.co.uk?payment=cancelled',
+      success_url: 'https://extraordinary-cocada-692ca8.netlify.app?payment=success',
+      cancel_url:  'https://extraordinary-cocada-692ca8.netlify.app?payment=cancelled',
     });
 
     return {
