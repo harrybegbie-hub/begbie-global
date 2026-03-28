@@ -3101,6 +3101,17 @@ function renderStep3() {
     html += '</div>'; // end accommodation bk-fld
   }
 
+  html += '<div class="bk-fld" style="margin-bottom:16px;margin-top:8px;"><label class="bk-lbl">How did you hear about us? *</label>';
+  html += '<select class="bk-sel" onchange="B.referral=this.value">';
+  html += '<option value="">Please select...</option>';
+  html += '<option value="Instagram"' + (B.referral==='Instagram'?' selected':'') + '>Instagram</option>';
+  html += '<option value="Facebook"' + (B.referral==='Facebook'?' selected':'') + '>Facebook</option>';
+  html += '<option value="Google Search"' + (B.referral==='Google Search'?' selected':'') + '>Google Search</option>';
+  html += '<option value="Referred by a friend"' + (B.referral==='Referred by a friend'?' selected':'') + '>Referred by a friend</option>';
+  html += '<option value="University / Student Union"' + (B.referral==='University / Student Union'?' selected':'') + '>University / Student Union</option>';
+  html += '<option value="Other"' + (B.referral==='Other'?' selected':'') + '>Other</option>';
+  html += '</select></div>';
+
   html += '<div class="bk-nav"><button class="bk-back" onclick="currentStep=2;renderModal()">&#8592; Back</button>';
   html += '<button class="bk-next" onclick="goStep3Next()">Continue &rarr; Extras</button></div>';
   return html;
@@ -5090,17 +5101,6 @@ function renderStepAccom() {
   html += '<div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:6px;">&#128100; Guarantor Support — also included</div>';
   html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Many UK student accommodation providers require a UK-based guarantor, which can be a barrier for international students. We explain which providers do and don\'t require one, and provide direct contacts for professional guarantor services that can act on your behalf.</div>';
   html += '</div>';
-
-  html += '<div class="bk-fld" style="margin-bottom:16px;"><label class="bk-lbl">How did you hear about us? *</label>';
-  html += '<select class="bk-sel" onchange="B.referral=this.value">';
-  html += '<option value="">Please select...</option>';
-  html += '<option value="Instagram"' + (B.referral==='Instagram'?' selected':'') + '>Instagram</option>';
-  html += '<option value="Facebook"' + (B.referral==='Facebook'?' selected':'') + '>Facebook</option>';
-  html += '<option value="Google Search"' + (B.referral==='Google Search'?' selected':'') + '>Google Search</option>';
-  html += '<option value="Referred by a friend"' + (B.referral==='Referred by a friend'?' selected':'') + '>Referred by a friend</option>';
-  html += '<option value="University / Student Union"' + (B.referral==='University / Student Union'?' selected':'') + '>University / Student Union</option>';
-  html += '<option value="Other"' + (B.referral==='Other'?' selected':'') + '>Other</option>';
-  html += '</select></div>';
 
   html += '<div class="bk-nav"><button class="bk-back" onclick="currentStep=3;renderModal()">&#8592; Back</button>';
   html += '<button class="bk-next" onclick="currentStep=4;renderModal()">Continue &rarr; Extras</button></div>';
