@@ -60,7 +60,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(11,31,69,0.12);}
 .path-card-pill::before{content:'✓';color:var(--teal);font-weight:800;flex-shrink:0;}
 .path-card-btn{display:inline-block;background:var(--amber);color:var(--navy);font-family:'Playfair Display',serif;font-weight:800;font-size:14px;padding:11px 22px;border-radius:11px;border:none;cursor:pointer;width:100%;text-align:center;}
 .path-card:hover .path-card-btn{background:white;}
-@media(max-width:600px){.path-chooser{grid-template-columns:1fr;}.stype-toggle{display:none;}}
+@media(max-width:600px){.path-chooser{grid-template-columns:1fr;}.stype-toggle{display:none;}.uk-feats-grid{grid-template-columns:1fr !important;}}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
 .hamburger span{width:22px;height:2px;background:var(--navy);border-radius:2px;display:block;transition:.3s;}
 .mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:999;background:var(--white);border-bottom:1px solid rgba(11,31,69,0.1);padding:16px 5%;flex-direction:column;gap:6px;box-shadow:0 8px 30px rgba(11,31,69,0.15);}
@@ -332,14 +332,17 @@ footer{background:#060f22;padding:56px 5% 24px;}
 .upsell-card{background:linear-gradient(135deg,#fffbf0,#fff8e5);border:1.5px solid var(--amber);border-radius:15px;padding:18px;margin:18px 0;position:relative;}
 .upsell-badge{position:absolute;top:-10px;left:14px;background:var(--amber);color:var(--navy);font-size:10.5px;font-weight:800;padding:3px 13px;border-radius:50px;}
 .upsell-inner{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:start;margin-top:6px;}
-.upsell-img{width:100%;aspect-ratio:1;border-radius:9px;background:rgba(11,31,69,.06);display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;color:var(--gmid);line-height:1.4;border:1.5px dashed rgba(11,31,69,.14);}
+.upsell-img{width:100%;aspect-ratio:1;border-radius:9px;background:rgba(11,31,69,.06);display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;color:var(--gmid);line-height:1.4;overflow:hidden;}
+.upsell-img img{width:100%;height:100%;object-fit:cover;border-radius:9px;display:block;}
+
 .upsell-title{font-weight:800;color:var(--navy);font-size:14px;margin-bottom:5px;}
 .upsell-desc{font-size:12.5px;color:var(--gtext);line-height:1.5;margin-bottom:8px;}
 .upsell-price{font-size:19px;font-weight:800;color:var(--amber);font-family:'Playfair Display',serif;margin-bottom:8px;}
 .upsell-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--amber);background:transparent;color:var(--navy);font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;transition:.2s;}
 .upsell-btn:hover,.upsell-btn.on{background:var(--amber);color:var(--navy);}
 .incl-banner{background:rgba(0,180,160,.1);border:1px solid rgba(0,180,160,.25);color:var(--teal2);border-radius:9px;padding:11px 15px;font-size:13px;font-weight:700;margin:14px 0;display:flex;align-items:center;gap:7px;}
-.kitchen-img{width:100%;height:150px;border-radius:13px;background:rgba(11,31,69,.05);border:2px dashed rgba(11,31,69,.11);display:flex;align-items:center;justify-content:center;font-size:13.5px;color:var(--gmid);text-align:center;margin-bottom:14px;line-height:1.5;}
+.kitchen-img{width:100%;height:150px;border-radius:13px;overflow:hidden;margin-bottom:14px;background:rgba(11,31,69,.05);}
+.kitchen-img img{width:100%;height:100%;object-fit:cover;display:block;border-radius:13px;}
 .kitchen-list{background:var(--gray);border-radius:13px;padding:16px;margin-bottom:4px;}
 .kitchen-list-title{font-weight:700;color:var(--navy);font-size:12.5px;margin-bottom:10px;}
 .kitchen-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
@@ -647,7 +650,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
     <li><a href="#" onclick="showView('home');return false;">Home</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#why">Why Us</a></li>
-    <li><a href="#intl">International</a></li>
+    <li><a href="#" onclick="showView('intl');return false;">International</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Get Your Pack →</a></li>
@@ -664,7 +667,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
   <a href="#packages" onclick="toggleMenu()">Packages</a>
   <a href="#how" onclick="toggleMenu()">How It Works</a>
   <a href="#why" onclick="toggleMenu()">Why Us</a>
-  <a href="#intl" onclick="toggleMenu()">International</a>
+  <a href="#" onclick="showView('intl');toggleMenu();return false;">International</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#contact" class="cta" onclick="toggleMenu()">Get Your Arrival Pack →</a>
@@ -756,92 +759,30 @@ footer{background:#060f22;padding:56px 5% 24px;}
         <div class="step-num">01</div>
         <div class="step-icon">&#128722;</div>
         <h3 class="step-title">Choose &amp; Customise</h3>
-        <p class="step-desc">Pick your package, choose your bedding colours and size, and add any upgrades.</p>
+        <p class="step-desc">Pick your package, choose your bedding colours and size, and add any upgrades. Whether you&#39;re moving across the UK or arriving from abroad, your package is built around you.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
         <div class="step-icon">&#128204;</div>
         <h3 class="step-title">We Get to Work</h3>
-        <p class="step-desc">We arrange delivery of your essentials directly to your accommodation before you arrive, prepare your guidance, and &mdash; for international students &mdash; sort your transport ticket.</p>
+        <p class="step-desc">We arrange delivery of your essentials directly to your accommodation before you arrive, prepare your guidance pack, and &mdash; for international students &mdash; sort your transport ticket. Everything is handled before you travel.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <div class="step-icon">&#9992;</div>
-        <h3 class="step-title">Travel Stress-Free</h3>
-        <p class="step-desc">Before you board, your airport transport is arranged, your essentials are at your accommodation, and our team is taking care of the practical guidance in the background. No lists, no last-minute stress. Just relax.</p>
+        <div class="step-icon">&#127881;</div>
+        <h3 class="step-title">Arrive &amp; Settle In</h3>
+        <p class="step-desc">Your essentials are already at your accommodation. Your guidance is ready. Whether you just drove across the country or landed from the other side of the world, everything is waiting. No stress, no lists, no last-minute runs to the shops.</p>
       </div>
       <div class="step">
         <div class="step-num">04</div>
-        <div class="step-icon">&#127881;</div>
-        <h3 class="step-title">Arrive &amp; Enjoy</h3>
-        <p class="step-desc">Your essentials are waiting at your accommodation and your practical guidance is already in motion. All that’s left is to enjoy it.</p>
+        <div class="step-icon">&#127891;</div>
+        <h3 class="step-title">Enjoy University</h3>
+        <p class="step-desc">The practical side is sorted. The admin is handled. Your room is ready. All that&#39;s left is to enjoy one of the biggest transitions of your life &mdash; the way it was always meant to feel.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTERNATIONAL -->
-<section id="intl">
-  <div class="wrap">
-    <div class="intl-grid">
-      <div>
-        <div class="sec-label">For International Students</div>
-        <h2 class="sec-title">A New Country. A New Chapter.<br>We Make Sure It&rsquo;s All Ready.</h2>
-        <p style="font-size:15px;color:var(--gtext);line-height:1.8;margin-bottom:28px;">Landing in a new country for the first time is exciting &mdash; but between the long-haul flight and the sheer number of things to sort, it can also feel overwhelming. Before you board, your transport is arranged, your essentials are on their way to your accommodation, and your guidance is ready. You land, follow the plan, and your essentials are waiting for you — ready to set up straight away.</p>
-        <div class="intl-feats">
-          <div class="intl-feat">
-            <div class="intl-feat-ico">&#9992;</div>
-            <div>
-              <div class="intl-feat-title">UK Transport is Complicated &mdash; We Handle It</div>
-              <div class="intl-feat-desc">Multiple operators, ticket types and connections &mdash; we work out the right route, arrange the ticket, and confirm everything before you travel. For some routes an additional charge may apply above what’s included — this is shown clearly before you pay.</div>
-            </div>
-          </div>
-          <div class="intl-feat">
-            <div class="intl-feat-ico">&#127968;</div>
-            <div>
-              <div class="intl-feat-title">Your Room is Ready &mdash; Not Empty</div>
-              <div class="intl-feat-desc">Your bedding and kitchen essentials are delivered before your arrival date. After a long flight, everything is already there &mdash; no shops, no heavy bags.</div>
-            </div>
-          </div>
-          <div class="intl-feat">
-            <div class="intl-feat-ico">&#128218;</div>
-            <div>
-              <div class="intl-feat-title">Guided Through the Things No One Explains</div>
-              <div class="intl-feat-desc">Enrolment, GP registration, bank account setup, guarantor requirements, UK CV structure, visa working rights and local orientation &mdash; clear step-by-step guidance for everything that&rsquo;s hard to figure out from abroad.</div>
-            </div>
-          </div>
-          <div class="intl-feat">
-            <div class="intl-feat-ico">&#128242;</div>
-            <div>
-              <div class="intl-feat-title">Connected From the Moment You Land</div>
-              <div class="intl-feat-desc">Every international package includes a UK e-SIM so you’re online as soon as your plane touches down — no hunting for a SIM card, no relying on airport Wi-Fi.</div>
-            </div>
-          </div>
-          <div class="intl-feat">
-            <div class="intl-feat-ico">&#128106;</div>
-            <div>
-              <div class="intl-feat-title">Your Family Can Relax With Peace of Mind</div>
-              <div class="intl-feat-desc">With everything arranged in advance and our UK-based team contactable throughout, the people who care about you can relax from day one.</div>
-            </div>
-          </div>
-        </div>
-        <button class="btn-amber" style="margin-top:28px" onclick="showView('intl')">See International Packages &rarr;</button>
-      </div>
-      <div class="intl-visual">
-        <div class="intl-vis-title">What’s Included</div>
-        <div class="intl-vis-items">
-          <div class="intl-vi"><div class="intl-vi-ico">&#9992;</div><div><div class="intl-vi-text">Transport from Your Arrival Airport</div><div class="intl-vi-sub">Train or coach ticket arranged &mdash; additional charges may apply for some routes</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#128652;</div><div><div class="intl-vi-text">Bedding &amp; Kitchen Pack Delivered</div><div class="intl-vi-sub">Arrives at your accommodation before you do &mdash; ready to set up</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#128661;</div><div><div class="intl-vi-text">University Enrolment &amp; GP Guidance</div><div class="intl-vi-sub">Step-by-step support for all key admin on arrival</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#128719;</div><div><div class="intl-vi-text">UK Bank Account Setup Guidance</div><div class="intl-vi-sub">We explain the process and which providers to use</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#127968;</div><div><div class="intl-vi-text">Accommodation &amp; Guarantor Guidance</div><div class="intl-vi-sub">Helping you navigate housing options and requirements</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#127981;</div><div><div class="intl-vi-text">CV, Employability &amp; Local Orientation</div><div class="intl-vi-sub">UK CV structure, visa working rights, personalised local area guide &amp; wellbeing signposting</div></div></div>
-          <div class="intl-vi"><div class="intl-vi-ico">&#128242;</div><div><div class="intl-vi-text">UK e-SIM Included</div><div class="intl-vi-sub">Connected from the moment you land &mdash; no waiting for a SIM card</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TESTIMONIALS -->
 <section id="testi" style="background:var(--grad1);">
@@ -911,7 +852,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <tr><td>Stationery Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>Essential Toiletries Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>Basic Essentials Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td></tr>
-          <tr><td>Essential Laundry Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;15</span></td><td><span class="ck">&#10003;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;15</span></td><td><span class="ck">&#10003;</span></td></tr>
+          <tr><td>Essential Laundry Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>Priority Support</td><td><span class="cx">&#10007;</span></td><td><span class="ck">&#10003;</span></td><td><span class="cx">&#10007;</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>CV &amp; Employability Support (UK CV, Indeed, visa working rights, interview prep)</td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>GP Registration Guidance</td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td></tr>
@@ -1044,57 +985,120 @@ footer{background:#060f22;padding:56px 5% 24px;}
 <div id="view-uk" style="display:none;padding-top:88px;">
 <div class="wrap" style="padding:40px 0 80px;">
   <button onclick="showView('home')" class="back-btn">&#8592; Back to Home</button>
-  <div class="sec-head" style="margin-top:28px;">
-    <div class="sec-label">&#127468;&#127463; UK Home Students</div>
-    <h2 class="sec-title">Choose Your UK Arrival Package</h2>
-    <p class="sec-sub">We’ve thought of everything, so you don’t have to. Pick your package, customise your bedding and add upgrades.</p>
-  </div>
-  <div class="pkg-grid">
-<div class="pkg-card">
-        <div class="pkg-badge">UK Home</div>
-        <h3 class="pkg-name">UK Home Standard</h3>
-        <p class="pkg-desc">For UK students &mdash; your bedding, kitchen starter pack and full guidance package, all delivered before you arrive</p>
-        <div class="pkg-price">&pound;200<sub> / package</sub></div>
-        <hr class="pkg-hr">
-        <ul class="pkg-feats">
-          <li class="pkg-feat">Full Bedding Pack &mdash; duvet, duvet cover, pillow, pillowcase, fitted sheet, bath towel, hand towel &amp; face towel, delivered to your accommodation</li>
-          <li class="pkg-feat">Kitchen Starter Pack &mdash; saucepan &amp; lid, frying pan, dinner set, cutlery, chef&#39;s knife, scissors, peeler, opener, food containers, dish cloth &amp; tea towel &#8212; all delivered to your accommodation</li>
-          <li class="pkg-feat">University Enrolment Guidance</li>
-          <li class="pkg-feat">Accommodation &amp; Guarantor Guidance</li>
-          <li class="pkg-feat">GP Registration Support</li>
-          <li class="pkg-feat">CV &amp; Employability Support &mdash; UK CV structure, Indeed account setup, visa working restrictions, typical interview processes &amp; common student roles explained</li>
-          <li class="pkg-feat">Local Orientation &amp; Wellbeing Signposting &mdash; personalised map of your university area including local shops, cafés and essentials, plus NHS and independent mental health services near your campus</li>
-          <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">Delivered before your arrival date &mdash; we don’t unpack or make the bed, but everything is ready and waiting</li>
-          <li class="pkg-feat" style="font-size:12px;color:var(--teal2);font-weight:600;">+ Premium Kitchen (£40), Stationery (£25), Toiletries (£25), Essentials (£25) &amp; Laundry (£15) available as add-ons</li>
-        </ul>
-        <button class="pkg-btn" onclick="openBooking('uk-standard')">Customise &amp; Order &rarr;</button>
-        <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
+
+  <!-- UK INFO SECTION -->
+  <div style="margin-top:36px;margin-bottom:52px;text-align:center;">
+    <div class="sec-label" style="margin-bottom:14px;">&#127468;&#127463; UK Home Students</div>
+    <h2 class="sec-title" style="margin-bottom:16px;">Your First Day Should Feel Exciting.<br>Not Exhausting.</h2>
+    <p style="font-size:15px;color:var(--gtext);line-height:1.8;margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Moving to university &mdash; even within the UK &mdash; means sourcing bedding in an unfamiliar city, figuring out GP registration before you know your postcode, and trying to enjoy one of the biggest moments of your life while ticking off an endless list. We sort all of it before you arrive. Your bedding and kitchen essentials are delivered to your accommodation, your guidance is prepared, and the admin is already handled. You walk in, and it's waiting. That's the whole point.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;text-align:left;" class="uk-feats-grid">
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#127968;</div>
+        <div>
+          <div class="intl-feat-title">Your Room is Ready &mdash; Not Empty</div>
+          <div class="intl-feat-desc">Your bedding and kitchen essentials are delivered directly to your accommodation before your arrival date. No last-minute shopping trips in an unfamiliar city. No heavy bags on moving day. Just walk in and settle.</div>
+        </div>
       </div>
-      <div class="pkg-card pop">
-        <div class="pkg-badge">Most Complete</div>
-        <h3 class="pkg-name">UK Home Premium</h3>
-        <p class="pkg-desc">The complete UK package &mdash; all add-ons included, priority support, everything delivered before you arrive</p>
-        <div class="pkg-price">&pound;310<sub> / package</sub></div>
-        <hr class="pkg-hr">
-        <ul class="pkg-feats">
-          <li class="pkg-feat">Premium Kitchen Pack &mdash; all Standard items plus Oven Glove, Rice Cooker, Bottle Opener, Cheese Grater, Whisk &amp; Pizza Cutter</li>
-          <li class="pkg-feat">Stationery Pack &mdash; A4 notepad, A5 notebook, pens, highlighters, sticky notes &amp; more</li>
-          <li class="pkg-feat">Essential Toiletries Pack &mdash; toilet roll, hand soap, toothpaste, toothbrush, body wash, shampoo &amp; loofah</li>
-          <li class="pkg-feat">Basic Essentials Pack &mdash; bin bags, UK plug adapter, rubber gloves, anti-bacterial spray, cleaning cloths, sponges &amp; washing up liquid</li>
-          <li class="pkg-feat">Essential Laundry Pack &mdash; mesh laundry bag, washing pods &amp; fabric softener</li>
-          <li class="pkg-feat" style="color:var(--teal2);font-weight:600;">&#9889; Priority Support &mdash; dedicated WhatsApp line with our UK-based team, faster response times</li>
-          <li class="pkg-feat">University Enrolment Guidance</li>
-          <li class="pkg-feat">Accommodation &amp; Guarantor Guidance</li>
-          <li class="pkg-feat">GP Registration Support</li>
-          <li class="pkg-feat">CV &amp; Employability Support &mdash; UK CV structure, Indeed account setup, visa working restrictions, typical interview processes &amp; common student roles explained</li>
-          <li class="pkg-feat">Local Orientation &amp; Wellbeing Signposting &mdash; personalised map of your university area including local shops, cafés and essentials, plus NHS and independent mental health services near your campus</li>
-          <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">All items delivered before your arrival date &mdash; ready for you to set up straight away</li>
-        </ul>
-        <button class="pkg-btn" onclick="openBooking('uk-premium')">Customise &amp; Order &rarr;</button>
-        <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128218;</div>
+        <div>
+          <div class="intl-feat-title">The Admin Nobody Explains &mdash; Sorted</div>
+          <div class="intl-feat-desc">GP registration, university enrolment, accommodation and guarantor requirements &mdash; we guide you through everything that's easy to overlook and hard to figure out when you're new to a city.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128188;</div>
+        <div>
+          <div class="intl-feat-title">Get Ahead on Your Career From Day One</div>
+          <div class="intl-feat-desc">UK CV structure, Indeed account setup, typical interview processes and common student roles &mdash; we make sure you know what employers actually expect before you've even unpacked.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128205;</div>
+        <div>
+          <div class="intl-feat-title">Your New City, Mapped Out for You</div>
+          <div class="intl-feat-desc">A personalised local area guide covering shops, cafes, essentials and NHS and independent wellbeing services near your campus &mdash; so your new city feels familiar from the moment you arrive.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128106;</div>
+        <div>
+          <div class="intl-feat-title">Peace of Mind for Everyone</div>
+          <div class="intl-feat-desc">Whether your family is nearby or on the other side of the country, everything is confirmed and in place before you arrive. Our UK-based team is contactable throughout.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#9989;</div>
+        <div>
+          <div class="intl-feat-title">A Full Arrival Package &mdash; Not Just a Kit</div>
+          <div class="intl-feat-desc">This isn't a bedding company. Every part of a Begbie Global package exists because a real student needed it. The items, the guidance, the timing &mdash; all considered before you book, so move-in day is exciting, not exhausting.</div>
+        </div>
+      </div>
+    </div>
+    <!-- UK What's Included visual panel -->
+    <div class="intl-visual" style="max-width:600px;margin-left:auto;margin-right:auto;">
+      <div class="intl-vis-title">What's Included in Every UK Package</div>
+      <div class="intl-vis-items">
+        <div class="intl-vi"><div class="intl-vi-ico">&#127968;</div><div><div class="intl-vi-text">Full Bedding Pack Delivered</div><div class="intl-vi-sub">Duvet, cover, pillow, fitted sheet, bath, hand &amp; face towels &mdash; at your accommodation before you arrive</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#127859;</div><div><div class="intl-vi-text">Kitchen Starter Pack Delivered</div><div class="intl-vi-sub">Saucepan, frying pan, dinner set, cutlery, knife, scissors, peeler &amp; more &mdash; everything to get cooking from day one</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128218;</div><div><div class="intl-vi-text">University Enrolment &amp; GP Guidance</div><div class="intl-vi-sub">Step-by-step support for all key admin on arrival</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#127968;</div><div><div class="intl-vi-text">Accommodation &amp; Guarantor Guidance</div><div class="intl-vi-sub">Helping you navigate housing options and requirements</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128188;</div><div><div class="intl-vi-text">CV &amp; Employability Support</div><div class="intl-vi-sub">UK CV structure, Indeed setup, visa working rights &amp; interview guidance</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128205;</div><div><div class="intl-vi-text">Local Orientation &amp; Wellbeing Signposting</div><div class="intl-vi-sub">Personalised map of your area &mdash; shops, cafes, NHS &amp; independent mental health services</div></div></div>
       </div>
     </div>
   </div>
+
+  <div class="sec-head" style="margin-top:0;margin-bottom:32px;">
+    <h2 class="sec-title">Choose Your UK Arrival Package</h2>
+    <p class="sec-sub">Pick your package, customise your bedding and add any upgrades.</p>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-badge">UK Home</div>
+      <h3 class="pkg-name">UK Home Standard</h3>
+      <p class="pkg-desc">For UK students &mdash; your bedding, kitchen starter pack and full guidance package, all delivered before you arrive</p>
+      <div class="pkg-price">&pound;200<sub> / package</sub></div>
+      <hr class="pkg-hr">
+      <ul class="pkg-feats">
+        <li class="pkg-feat">Full Bedding Pack &mdash; duvet, duvet cover, pillow, pillowcase, fitted sheet, bath towel, hand towel &amp; face towel, delivered to your accommodation</li>
+        <li class="pkg-feat">Kitchen Starter Pack &mdash; saucepan &amp; lid, frying pan, dinner set, cutlery, chef&#39;s knife, scissors, peeler, opener, food containers, dish cloth &amp; tea towel &mdash; all delivered to your accommodation</li>
+        <li class="pkg-feat">University Enrolment Guidance</li>
+        <li class="pkg-feat">Accommodation &amp; Guarantor Guidance</li>
+        <li class="pkg-feat">GP Registration Support</li>
+        <li class="pkg-feat">CV &amp; Employability Support &mdash; UK CV structure, Indeed account setup, visa working restrictions, typical interview processes &amp; common student roles explained</li>
+        <li class="pkg-feat">Local Orientation &amp; Wellbeing Signposting &mdash; personalised map of your university area including local shops, caf&eacute;s and essentials, plus NHS and independent mental health services near your campus</li>
+        <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">Delivered before your arrival date &mdash; we don&#39;t unpack or make the bed, but everything is ready and waiting</li>
+        <li class="pkg-feat" style="font-size:12px;color:var(--teal2);font-weight:600;">+ Premium Kitchen (&pound;40), Stationery (&pound;25), Toiletries (&pound;25), Essentials (&pound;25) &amp; Laundry (&pound;25) available as add-ons</li>
+      </ul>
+      <button class="pkg-btn" onclick="openBooking('uk-standard')">Customise &amp; Order &rarr;</button>
+      <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
+    </div>
+    <div class="pkg-card pop">
+      <div class="pkg-badge">Most Complete</div>
+      <h3 class="pkg-name">UK Home Premium</h3>
+      <p class="pkg-desc">The complete UK package &mdash; all add-ons included, priority support, everything delivered before you arrive</p>
+      <div class="pkg-price">&pound;310<sub> / package</sub></div>
+      <hr class="pkg-hr">
+      <ul class="pkg-feats">
+        <li class="pkg-feat">Premium Kitchen Pack &mdash; all Standard items plus Oven Glove, Rice Cooker, Bottle Opener, Cheese Grater, Whisk &amp; Pizza Cutter</li>
+        <li class="pkg-feat">Stationery Pack &mdash; A4 notepad, A5 notebook, pens, highlighters, sticky notes &amp; more</li>
+        <li class="pkg-feat">Essential Toiletries Pack &mdash; toilet roll, hand soap, toothpaste, toothbrush, body wash, shampoo &amp; loofah</li>
+        <li class="pkg-feat">Basic Essentials Pack &mdash; bin bags, UK plug adapter, rubber gloves, anti-bacterial spray, cleaning cloths, sponges &amp; washing up liquid</li>
+        <li class="pkg-feat">Essential Laundry Pack &mdash; mesh laundry bag, washing pods &amp; fabric softener</li>
+        <li class="pkg-feat" style="color:var(--teal2);font-weight:600;">&#9889; Priority Support &mdash; dedicated WhatsApp line with our UK-based team, faster response times</li>
+        <li class="pkg-feat">University Enrolment Guidance</li>
+        <li class="pkg-feat">Accommodation &amp; Guarantor Guidance</li>
+        <li class="pkg-feat">GP Registration Support</li>
+        <li class="pkg-feat">CV &amp; Employability Support &mdash; UK CV structure, Indeed account setup, visa working restrictions, typical interview processes &amp; common student roles explained</li>
+        <li class="pkg-feat">Local Orientation &amp; Wellbeing Signposting &mdash; personalised map of your university area including local shops, caf&eacute;s and essentials, plus NHS and independent mental health services near your campus</li>
+        <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">All items delivered before your arrival date &mdash; ready for you to set up straight away</li>
+      </ul>
+      <button class="pkg-btn" onclick="openBooking('uk-premium')">Customise &amp; Order &rarr;</button>
+      <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
+    </div>
+  </div>
+</div>
 </div>
 </div>
 
@@ -1102,10 +1106,74 @@ footer{background:#060f22;padding:56px 5% 24px;}
 <div id="view-intl" style="display:none;padding-top:88px;">
 <div class="wrap" style="padding:40px 0 80px;">
   <button onclick="showView('home')" class="back-btn">&#8592; Back to Home</button>
-  <div class="sec-head" style="margin-top:28px;">
-    <div class="sec-label">&#127758; International Students</div>
+
+  <!-- INTL INFO SECTION -->
+  <div style="margin-top:36px;margin-bottom:52px;text-align:center;">
+    <div class="sec-label" style="margin-bottom:14px;">&#127758; International Students</div>
+    <h2 class="sec-title" style="margin-bottom:16px;">A New Country. A New Chapter.<br>We've Thought of Everything.</h2>
+    <p style="font-size:15px;color:var(--gtext);line-height:1.8;margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;">Landing in a new country for the first time is exciting &mdash; but between the long-haul flight and the sheer number of things to sort, it can feel overwhelming. Before you board, your transport is arranged, your essentials are already on their way to your room, and your guidance is ready. You land, follow the plan, and everything is waiting. We've thought of everything, so you don't have to.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;text-align:left;" class="uk-feats-grid">
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#9992;</div>
+        <div>
+          <div class="intl-feat-title">UK Transport is Complicated &mdash; We Handle It</div>
+          <div class="intl-feat-desc">Multiple operators, ticket types and connections &mdash; after a long-haul flight, alone, with heavy bags. We work out the right route, arrange the ticket, and confirm everything before you travel. You just follow the plan.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#127968;</div>
+        <div>
+          <div class="intl-feat-title">Your Room is Ready &mdash; Not Empty</div>
+          <div class="intl-feat-desc">Your bedding and kitchen essentials are delivered before your arrival date. After a long flight, everything is already there &mdash; no shops, no heavy bags, no stress on day one.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128242;</div>
+        <div>
+          <div class="intl-feat-title">Connected From the Moment You Land</div>
+          <div class="intl-feat-desc">Every international package includes a UK e-SIM so you're online the moment your plane touches down. No hunting for a SIM shop at the airport. No expensive roaming charges. Just connected.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128218;</div>
+        <div>
+          <div class="intl-feat-title">Guided Through the Things No One Explains</div>
+          <div class="intl-feat-desc">Enrolment, GP registration, bank account setup, guarantor requirements, UK CV structure, visa working rights and local orientation &mdash; clear guidance for everything that's hard to figure out from abroad.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#128106;</div>
+        <div>
+          <div class="intl-feat-title">Your Family Can Relax</div>
+          <div class="intl-feat-desc">With everything arranged before departure and our UK-based team contactable throughout, the people who care about you can relax from day one &mdash; whether they're an hour away or on another continent.</div>
+        </div>
+      </div>
+      <div class="intl-feat">
+        <div class="intl-feat-ico">&#9989;</div>
+        <div>
+          <div class="intl-feat-title">A Full Arrival Journey &mdash; Not Just a Kit</div>
+          <div class="intl-feat-desc">This isn't a bedding company. Every part of a Begbie Global package exists because a real student needed it. The transport, the e-SIM, the guidance, the items &mdash; all of it considered before you even board the plane.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Intl What's Included visual panel -->
+    <div class="intl-visual" style="max-width:600px;margin-left:auto;margin-right:auto;">
+      <div class="intl-vis-title">What's Included in Every International Package</div>
+      <div class="intl-vis-items">
+        <div class="intl-vi"><div class="intl-vi-ico">&#9992;</div><div><div class="intl-vi-text">Transport from Your Arrival Airport</div><div class="intl-vi-sub">Train or coach ticket arranged &mdash; additional charges may apply for some routes</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128652;</div><div><div class="intl-vi-text">Bedding &amp; Kitchen Pack Delivered</div><div class="intl-vi-sub">Arrives at your accommodation before you do &mdash; ready to set up</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128242;</div><div><div class="intl-vi-text">UK e-SIM Included</div><div class="intl-vi-sub">Connected from the moment you land &mdash; no waiting for a SIM card</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128218;</div><div><div class="intl-vi-text">University Enrolment &amp; GP Guidance</div><div class="intl-vi-sub">Step-by-step support for all key admin on arrival</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#128719;</div><div><div class="intl-vi-text">UK Bank Account Setup Guidance</div><div class="intl-vi-sub">We explain the process and which providers to use</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#127968;</div><div><div class="intl-vi-text">Accommodation &amp; Guarantor Guidance</div><div class="intl-vi-sub">Helping you navigate housing options and requirements</div></div></div>
+        <div class="intl-vi"><div class="intl-vi-ico">&#127981;</div><div><div class="intl-vi-text">CV, Employability &amp; Local Orientation</div><div class="intl-vi-sub">UK CV structure, visa working rights, personalised local area guide &amp; wellbeing signposting</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-top:0;margin-bottom:32px;">
     <h2 class="sec-title">Choose Your International Arrival Package</h2>
-    <p class="sec-sub">Transport, essentials, guidance &mdash; all sorted before you land. We’ve thought of everything, so you don’t have to.</p>
+    <p class="sec-sub">Transport, essentials, guidance &mdash; all sorted before you land.</p>
   </div>
 <!-- Comparison header -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;" class="intl-compare-grid">
@@ -1129,7 +1197,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
             <li class="pkg-feat">UK Bank Account Setup Guidance</li>
             <li class="pkg-feat">&#128242; UK e-SIM &mdash; connected from the moment you land</li>
             <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">Delivered before your arrival date &mdash; ready for you to set up on arrival</li>
-            <li class="pkg-feat" style="font-size:12px;color:var(--teal2);font-weight:600;">+ Premium Kitchen (£40), Stationery (£25), Toiletries (£25), Essentials (£25) &amp; Laundry (£15) available as add-ons</li>
+            <li class="pkg-feat" style="font-size:12px;color:var(--teal2);font-weight:600;">+ Premium Kitchen (£40), Stationery (£25), Toiletries (£25), Essentials (£25) &amp; Laundry (£25) available as add-ons</li>
           </ul>
           <div style="background:rgba(11,31,69,.04);border-radius:10px;padding:12px;margin-bottom:16px;font-size:12.5px;color:var(--gtext);">
             <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">Optional add-ons (add individually):</div>
@@ -1137,7 +1205,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
             <div style="color:var(--gmid);">&#10003; Stationery Pack &mdash; +&pound;25</div>
             <div style="color:var(--gmid);">&#10003; Essential Toiletries Pack &mdash; +&pound;25</div>
             <div style="color:var(--gmid);">&#10003; Basic Essentials Pack &mdash; +&pound;25</div>
-            <div style="color:var(--gmid);">&#10003; Essential Laundry Pack &mdash; +&pound;15</div>
+            <div style="color:var(--gmid);">&#10003; Essential Laundry Pack &mdash; +&pound;25</div>
             <div style="color:var(--gmid);">&#10003; UK e-SIM &mdash; included in all international packages</div>
             <div style="color:var(--gmid);">&#10003; Private Airport Taxi &mdash; price varies by route</div>
           </div>
@@ -1249,7 +1317,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
             <button id="cmp-add-stat" onclick="toggleCmpAddon('stat')" class="cmp-mode-btn">&#9999;&#65039; Stationery +&pound;25</button>
             <button id="cmp-add-toil" onclick="toggleCmpAddon('toil')" class="cmp-mode-btn">&#129529; Toiletries +&pound;25</button>
             <button id="cmp-add-bas" onclick="toggleCmpAddon('bas')" class="cmp-mode-btn">&#9968;&#65039; Essentials +&pound;25</button>
-            <button id="cmp-add-lau" onclick="toggleCmpAddon('lau')" class="cmp-mode-btn">&#129524; Laundry +&pound;15</button>
+            <button id="cmp-add-lau" onclick="toggleCmpAddon('lau')" class="cmp-mode-btn">&#129524; Laundry +&pound;25</button>
           </div>
           <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;">These are included in Premium &mdash; toggle them on Standard to see what you&rsquo;d actually pay</div>
         </div>
@@ -1291,7 +1359,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
       <ul class="foot-links">
         <li><a href="#" onclick="showView('home');return false;">Home</a></li>
         <li><a href="#how">How It Works</a></li>
-        <li><a href="#intl">International Students</a></li>
+        <li><a href="#" onclick="showView('intl');return false;">International Students</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1713,7 +1781,7 @@ function getTotal() {
   if (B.stat && !B.pkg.premium) t += 25;
   if (B.toiletries && !B.pkg.premium) t += 25;
   if (B.basics && !B.pkg.premium) t += 25;
-  if (B.laundry && !B.pkg.premium) t += 15;
+  if (B.laundry && !B.pkg.premium) t += 25;
   if (B.privateTaxi && B.taxiCost > 0) t += getStationTaxiCustomerCost();
   if (B.airportTaxi && B.airportTaxiCost > 0) t += getAirportTaxiCustomerCost();
   if (B.selectedRoute && B.selectedRoute.ticketPrice) t += getTransportCustomerCost(B.selectedRoute.ticketPrice);
@@ -3220,9 +3288,9 @@ function renderStep4() {
     html += '<ul class="incl-list"><li>&#10003; Mesh Laundry Bag</li><li>&#10003; Washing Pods</li><li>&#10003; Fabric Softener</li></ul>';
     html += '</div></div>';
   } else {
-    html += '<div class="upsell-card"><div class="upsell-badge">&#129524; Add-On +&pound;15</div>';
+    html += '<div class="upsell-card"><div class="upsell-badge">&#129524; Add-On +&pound;25</div>';
     html += '<div class="upsell-inner">';
-    html += '<div class="upsell-img">&#129524;<br><small>Laundry</small></div>';
+    html += '<div class="upsell-img"><img src="placeholder-image-laundry.jpeg" alt="Laundry Pack" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
     html += '<div>';
     html += '<div class="upsell-title">Essential Laundry Pack</div>';
     html += '<div class="upsell-desc">Mesh Laundry Bag, Washing Pods &amp; Fabric Softener &mdash; the bits nobody thinks to bring.</div>';
@@ -3359,7 +3427,7 @@ function renderStep4() {
   } else {
     if (B.toiletries) html += '<div class="ps-row add"><span>+ Essential Toiletries Pack</span><span>&pound;25</span></div>';
     if (B.basics) html += '<div class="ps-row add"><span>+ Basic Essentials Pack</span><span>&pound;25</span></div>';
-    if (B.laundry) html += '<div class="ps-row add"><span>+ Essential Laundry Pack</span><span>&pound;15</span></div>';
+    if (B.laundry) html += '<div class="ps-row add"><span>+ Essential Laundry Pack</span><span>&pound;25</span></div>';
   }
   if (B.privateTaxi && B.taxiCost > 0) {
     var stc = getStationTaxiCustomerCost();
@@ -3424,7 +3492,7 @@ function renderStep5() {
   } else {
     if (B.toiletries) html += '<div class="rev-row add"><span>Essential Toiletries Pack</span><span>+&pound;25</span></div>';
     if (B.basics) html += '<div class="rev-row add"><span>Basic Essentials Pack</span><span>+&pound;25</span></div>';
-    if (B.laundry) html += '<div class="rev-row add"><span>Essential Laundry Pack</span><span>+&pound;15</span></div>';
+    if (B.laundry) html += '<div class="rev-row add"><span>Essential Laundry Pack</span><span>+&pound;25</span></div>';
   }
   if (isIntl && B.transport && B.selectedRoute) {
     var tIcon = B.transport === 'train' ? '&#128642;' : '&#128652;';
@@ -5622,7 +5690,7 @@ function buildOrderSummaryText() {
     if (B.stat) lines.push('+ Stationery Pack: \u00a325');
     if (B.toiletries) lines.push('+ Essential Toiletries Pack: \u00a325');
     if (B.basics) lines.push('+ Basic Essentials Pack: \u00a325');
-    if (B.laundry) lines.push('+ Essential Laundry Pack: \u00a315');
+    if (B.laundry) lines.push('+ Essential Laundry Pack: \u00a325');
   }
   if (B.privateTaxi && B.taxiCost > 0) {
     var stcWA = getStationTaxiCustomerCost();
@@ -6186,7 +6254,7 @@ function updateComparison() {
       else rows += '<div class="cmp-row" style="opacity:.4"><span>Essential Toiletries Pack</span><span>Not added</span></div>';
       if (CMP.addBas)  { rows += '<div class="cmp-row"><span>Basic Essentials Pack</span><span class="cmp-extra">+\u00a325</span></div>'; runningExtra += 25; }
       else rows += '<div class="cmp-row" style="opacity:.4"><span>Basic Essentials Pack</span><span>Not added</span></div>';
-      if (CMP.addLau)  { rows += '<div class="cmp-row"><span>Essential Laundry Pack</span><span class="cmp-extra">+\u00a315</span></div>'; runningExtra += 15; }
+      if (CMP.addLau)  { rows += '<div class="cmp-row"><span>Essential Laundry Pack</span><span class="cmp-extra">+\u00a325</span></div>'; runningExtra += 25; }
       else rows += '<div class="cmp-row" style="opacity:.4"><span>Essential Laundry Pack</span><span>Not added</span></div>';
     }
     return { rows: rows, total: runningExtra };
