@@ -944,7 +944,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is an e-SIM and how does it work?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">An e-SIM is a digital SIM card that is activated on your phone before you travel — no physical card needed. All international packages include a UK e-SIM, so you'll have a working UK mobile number and data the moment your plane lands. No hunting for a SIM shop at the airport, no expensive roaming charges.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When should I book?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">We recommend booking <strong>at least 4 weeks before your arrival date</strong>. This gives us enough time to prepare everything and ensures your preferred bedding colours are available. If your arrival is sooner, get in touch at <a href="/cdn-cgi/l/email-protection#9ef7f0f8f1defcfbf9fcf7fbf9f2f1fcfff2b0fdf1b0ebf5" style="color:var(--teal);"><span class="__cf_email__" data-cfemail="ddb4b3bbb29dbfb8babfb4b8bab1b2bfbcb1f3beb2f3a8b6">[email&#160;protected]</span></a> — we'll always do our best to help.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can a parent or guardian book on behalf of a student?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Absolutely — many of our bookings come from parents and guardians. Just provide the student's name, accommodation address and arrival date. We'll handle everything from there and keep you updated throughout.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I pay? Are deposits available?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">UK packages are paid in full at booking by card (Stripe) or bank transfer (Tide). International packages can be paid in full or with a deposit — pay half now to secure your place, then the balance before your services begin. If your visa is still pending, the deposit option lets you hold your place until it's approved.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I pay? Are deposits available?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">UK packages are paid in full at booking by card via Stripe — we accept all major cards including international cards. International packages can be paid in full or with a deposit — pay half now to secure your place, then the balance before your services begin. If your visa is still pending, the deposit option lets you hold your place until it's approved. If you'd prefer to pay by bank transfer, just contact us on WhatsApp or email and we'll arrange it.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What if my visa is refused?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">If your visa is formally refused, contact us at <a href="/cdn-cgi/l/email-protection#d5bcbbb3ba95b7b0b2b7bcb0b2b9bab7b4b9fbb6bafba0be" style="color:var(--teal);"><span class="__cf_email__" data-cfemail="6a03040c052a080f0d08030f0d0605080b06440905441f01">[email&#160;protected]</span></a> with your official refusal letter. We review deposit refunds in line with our Refund Policy. We always aim to be fair — if we haven't yet started significant work on your package, we'll do our best to help.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if my plans change after booking?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Contact us as soon as possible by email or WhatsApp. If your arrival date or accommodation changes, we'll do everything we can to update arrangements. The sooner you let us know, the more we can do. Please review our Terms &amp; Conditions and Refund Policy for full details.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which universities do you cover?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">We cover all major UK universities nationwide — from Chester and Manchester to London, Edinburgh, Birmingham, and beyond. Not sure if we cover yours? Just ask. We're always expanding and will do our best to accommodate you wherever you're studying.</div></div></div>
@@ -1068,7 +1068,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <li class="pkg-feat" style="font-size:12px;color:var(--teal2);font-weight:600;">+ Premium Kitchen (£40), Stationery (£25), Toiletries (£25), Essentials (£25) &amp; Laundry (£15) available as add-ons</li>
         </ul>
         <button class="pkg-btn" onclick="openBooking('uk-standard')">Customise &amp; Order &rarr;</button>
-        <p class="pkg-secure">&#128274; Stripe or Tide &middot; Secure payment</p>
+        <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
       </div>
       <div class="pkg-card pop">
         <div class="pkg-badge">Most Complete</div>
@@ -1091,7 +1091,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <li class="pkg-feat" style="font-size:12px;color:var(--gmid);">All items delivered before your arrival date &mdash; ready for you to set up straight away</li>
         </ul>
         <button class="pkg-btn" onclick="openBooking('uk-premium')">Customise &amp; Order &rarr;</button>
-        <p class="pkg-secure">&#128274; Stripe or Tide &middot; Secure payment</p>
+        <p class="pkg-secure">&#128274; Stripe &middot; Secure payment</p>
       </div>
     </div>
   </div>
@@ -1574,7 +1574,7 @@ function clearProgress() {
   B.transport=''; B.station=''; B.stationObj=null; B.selectedRoute=null;
   B.privateTaxi=false; B.taxiCost=0; B.taxiFare=0; B.taxiBreakdown=null;
   B.airportTaxi=false; B.airportTaxiCost=0; B.airportTaxiFare=0; B.airportTaxiBreakdown=null;
-  B.name=''; B.email=''; B.phone=''; B.nationality=''; B.accomKnown=null; B.deliverHome=false; B.homeAddress=''; B.homePostcode=''; B.paid=false; B.housingUnlocked=false;
+  B.name=''; B.email=''; B.phone=''; B.nationality=''; B.accomKnown=null; B.deliverHome=false; B.homeAddress=''; B.homePostcode=''; B.paid=false; B.housingUnlocked=false; B.referral='';
   B.university=''; B.postcode=''; B.addressFull=''; B.buildingName=''; B.streetName=''; B.cityName='';
   B.accomLat=null; B.accomLon=null; B.room='';
   B.date=''; B.time=''; B.flight=''; B.airport=''; B.airportObj=null;
@@ -3526,9 +3526,9 @@ function renderStep6() {
 
   if (p.type === 'uk') {
     html += '<div class="payment-opts-title">Choose how to pay:</div>';
-    html += '<div class="pay-opts-grid">';
-    html += '<button class="pay-opt-btn" style="' + (!allMandatory ? 'opacity:.4;cursor:not-allowed;' : '') + '" onclick="' + (allMandatory ? 'doPayStripe()' : '') + '"><span style="font-size:22px">&#128179;</span><div><strong>Pay by Card</strong><br><small>Stripe &mdash; all major cards</small></div></button>';
-    html += '<button class="pay-opt-btn" style="' + (!allMandatory ? 'opacity:.4;cursor:not-allowed;' : '') + '" onclick="' + (allMandatory ? 'doPayTide()' : '') + '"><span style="font-size:22px">&#127968;</span><div><strong>Bank Transfer</strong><br><small>Tide &mdash; UK bank transfer</small></div></button>';
+    html += '<div class="pay-opts-grid" style="grid-template-columns:1fr;">';
+    html += '<button class="pay-opt-btn" style="' + (!allMandatory ? 'opacity:.4;cursor:not-allowed;' : '') + '" onclick="' + (allMandatory ? 'doPayStripe()' : '') + '"><span style="font-size:22px">&#128179;</span><div><strong>Pay by Card</strong><br><small>Stripe &mdash; all major cards accepted worldwide</small></div></button>';
+    html += '<p style="font-size:12px;color:var(--gmid);text-align:center;margin-top:8px;">Prefer to pay by bank transfer? <a href=\"https://wa.me/447377748980\" target=\"_blank\" style=\"color:var(--teal);font-weight:600;\">Contact us on WhatsApp</a> to arrange.</p>';
     html += '</div>';
   } else {
     html += '<button class="pay-btn" style="' + (!allMandatory ? 'opacity:.4;cursor:not-allowed;' : '') + '" onclick="' + (allMandatory ? 'doPayStripe()' : '') + '">&#128274; Pay Securely with Stripe &mdash; &pound;' + getTotal() + '</button>';
@@ -5091,6 +5091,17 @@ function renderStepAccom() {
   html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Many UK student accommodation providers require a UK-based guarantor, which can be a barrier for international students. We explain which providers do and don\'t require one, and provide direct contacts for professional guarantor services that can act on your behalf.</div>';
   html += '</div>';
 
+  html += '<div class="bk-fld" style="margin-bottom:16px;"><label class="bk-lbl">How did you hear about us? *</label>';
+  html += '<select class="bk-sel" onchange="B.referral=this.value">';
+  html += '<option value="">Please select...</option>';
+  html += '<option value="Instagram"' + (B.referral==='Instagram'?' selected':'') + '>Instagram</option>';
+  html += '<option value="Facebook"' + (B.referral==='Facebook'?' selected':'') + '>Facebook</option>';
+  html += '<option value="Google Search"' + (B.referral==='Google Search'?' selected':'') + '>Google Search</option>';
+  html += '<option value="Referred by a friend"' + (B.referral==='Referred by a friend'?' selected':'') + '>Referred by a friend</option>';
+  html += '<option value="University / Student Union"' + (B.referral==='University / Student Union'?' selected':'') + '>University / Student Union</option>';
+  html += '<option value="Other"' + (B.referral==='Other'?' selected':'') + '>Other</option>';
+  html += '</select></div>';
+
   html += '<div class="bk-nav"><button class="bk-back" onclick="currentStep=3;renderModal()">&#8592; Back</button>';
   html += '<button class="bk-next" onclick="currentStep=4;renderModal()">Continue &rarr; Extras</button></div>';
   return html;
@@ -5471,7 +5482,73 @@ function pickStation(i) {
 }
 
 // ── PAYMENTS ──
+// ── AIRTABLE ORDER STORAGE ──
+var AIRTABLE_BASE_ID = 'app2lyNSjkuhDAhgK';
+var AIRTABLE_TABLE = 'Orders';
+
+function sendToAirtable(paymentMethod) {
+  var total = getTotal();
+  var addOns = [];
+  if (B.pkg.premium) {
+    addOns.push('Premium Kitchen Pack (included)');
+    addOns.push('Stationery Pack (included)');
+    addOns.push('Essential Toiletries Pack (included)');
+    addOns.push('Basic Essentials Pack (included)');
+    addOns.push('Essential Laundry Pack (included)');
+  } else {
+    if (B.premKit) addOns.push('Premium Kitchen Pack (+£40)');
+    if (B.stat) addOns.push('Stationery Pack (+£25)');
+    if (B.toiletries) addOns.push('Essential Toiletries Pack (+£25)');
+    if (B.basics) addOns.push('Basic Essentials Pack (+£25)');
+    if (B.laundry) addOns.push('Essential Laundry Pack (+£25)');
+  }
+  if (B.airportTaxi) addOns.push('Airport Taxi Transfer');
+
+  var fields = {
+    'Full Name': B.name || '',
+    'Email': B.email || '',
+    'Phone': B.phone || '',
+    'Nationality': B.nationality || '',
+    'University': B.university || '',
+    'Package': B.pkg ? B.pkg.name : '',
+    'Package Price (£)': B.pkg ? B.pkg.price : 0,
+    'Total Paid (£)': total,
+    'Payment Method': paymentMethod,
+    'Bed Size': B.bed || '',
+    'Bedding Colour': B.bCol || '',
+    'Towel Colour': B.tCol || '',
+    'Add-Ons': addOns.join(', ') || 'None',
+    'Accommodation Address': B.addressFull || '',
+    'Room / Flat': B.room || '',
+    'Postcode': B.postcode || '',
+    'Arrival Date': B.date || '',
+    'Arrival Time': B.time || '',
+    'Arrival Airport': B.airport || '',
+    'Flight Number': B.flight || '',
+    'Transport Type': B.transport || '',
+    'Transport Route': B.selectedRoute ? B.selectedRoute.label : '',
+    'Accommodation Status': B.accomKnown === true ? 'Known' : B.accomKnown === false ? 'Needs support' : 'TBC',
+    'GP Consent': B.consentGP ? 'Yes' : 'No',
+    'Accommodation Contact Consent': B.consentAccom ? 'Yes' : 'No',
+    'Transport Booking Consent': B.consentTransport ? 'Yes' : 'No',
+    'e-SIM Consent': B.consentESim ? 'Yes' : 'No',
+    'Delivery Consent': B.consentDelivery ? 'Yes' : 'No',
+    'Order Date': new Date().toISOString().split('T')[0],
+    'Order Status': 'New',
+    'How Did You Hear About Us': B.referral || ''
+  };
+
+  fetch('/.netlify/functions/save-order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(fields)
+  }).catch(function(err) {
+    console.warn('Airtable save failed (non-blocking):', err);
+  });
+}
+
 function doPayStripe() {
+  sendToAirtable('Stripe - Card');
   var total = getTotal();
   var summary = buildOrderSummaryText();
 
@@ -5505,14 +5582,17 @@ function doPayStripe() {
 }
 
 function doPayTide() {
+  // Tide removed — bank transfer now handled via WhatsApp contact
+  sendToAirtable('Bank Transfer - WhatsApp');
   var total = getTotal();
-  var msg = 'Hi Begbie Global! I would like to pay \u00a3' + total + ' by bank transfer (Tide) for the ' + B.pkg.name + '.\n\nPlease send me the payment link for the correct amount.\n\n' + buildOrderSummaryText();
+  var msg = 'Hi Begbie Global! I would like to pay \u00a3' + total + ' by bank transfer for the ' + B.pkg.name + '.\n\nPlease send me your bank details.\n\n' + buildOrderSummaryText();
   window.open('https://wa.me/447377748980?text=' + encodeURIComponent(msg), '_blank');
   closeBk();
 }
 
 function doPayDeposit() {
-  var msg = 'Hi Begbie Global! I would like to arrange a deposit for the ' + B.pkg.name + ' (total £' + getTotal() + '). Can you help?\n\n' + buildOrderSummaryText();
+  sendToAirtable('Deposit - WhatsApp');
+  var msg = 'Hi Begbie Global! I would like to arrange a deposit for the ' + B.pkg.name + ' (total \u00a3' + getTotal() + '). Can you help?\n\n' + buildOrderSummaryText();
   window.open('https://wa.me/447377748980?text=' + encodeURIComponent(msg), '_blank');
   if (B.accomKnown === false) {
     B.paid = true; B.housingUnlocked = true;
@@ -5761,7 +5841,7 @@ function _heroUK() {
     '<div class="pkg-row-price">&pound;310</div>' +
     '</a>' +
     '</div>' +
-    '<div class="hero-card-footer">&#128274; Stripe or Tide &middot; Secure payment &middot; UK Nationwide</div>' +
+    '<div class="hero-card-footer">&#128274; Stripe &middot; Secure payment &middot; UK Nationwide</div>' +
     '</div>';
 }
 
