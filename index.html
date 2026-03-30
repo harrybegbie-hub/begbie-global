@@ -329,16 +329,16 @@ footer{background:#060f22;padding:56px 5% 24px;}
 .swatch-ck,.swatch-no{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:white;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.5);}
 .swatch-no{color:#e53e3e;font-size:13px;}
 .sel-lbl{font-size:11.5px;color:var(--teal2);font-weight:700;margin-top:1px;}
-.upsell-card{background:linear-gradient(135deg,#fffbf0,#fff8e5);border:1.5px solid var(--amber);border-radius:15px;padding:18px;margin:18px 0;position:relative;}
-.upsell-badge{position:absolute;top:-10px;left:14px;background:var(--amber);color:var(--navy);font-size:10.5px;font-weight:800;padding:3px 13px;border-radius:50px;}
-.upsell-inner{display:grid;grid-template-columns:90px 1fr;gap:14px;align-items:start;margin-top:6px;}
-.upsell-img{width:100%;aspect-ratio:1;border-radius:9px;background:rgba(11,31,69,.06);display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;color:var(--gmid);line-height:1.4;overflow:hidden;}
-.upsell-img img{width:100%;height:100%;object-fit:cover;border-radius:9px;display:block;}
+.upsell-card{background:linear-gradient(135deg,#fffbf0,#fff8e5);border:1.5px solid var(--amber);border-radius:15px;padding:0;margin:18px 0;position:relative;overflow:hidden;}
+.upsell-badge{position:absolute;top:10px;left:14px;background:var(--amber);color:var(--navy);font-size:10.5px;font-weight:800;padding:3px 13px;border-radius:50px;z-index:2;}
+.upsell-inner{display:flex;flex-direction:column;gap:0;margin-top:6px;}
+.upsell-img{width:100%;height:175px;border-radius:10px 10px 0 0;overflow:hidden;margin-bottom:0;}
+.upsell-img img{width:100%;height:100%;object-fit:cover;display:block;}
 
 .upsell-title{font-weight:800;color:var(--navy);font-size:14px;margin-bottom:5px;}
 .upsell-desc{font-size:12.5px;color:var(--gtext);line-height:1.5;margin-bottom:8px;}
 .upsell-price{font-size:19px;font-weight:800;color:var(--amber);font-family:'Playfair Display',serif;margin-bottom:8px;}
-.upsell-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--amber);background:transparent;color:var(--navy);font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;transition:.2s;}
+.upsell-content{padding:14px 16px 16px;}.upsell-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--amber);background:transparent;color:var(--navy);font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;transition:.2s;}
 .upsell-btn:hover,.upsell-btn.on{background:var(--amber);color:var(--navy);}
 .incl-banner{background:rgba(0,180,160,.1);border:1px solid rgba(0,180,160,.25);color:var(--teal2);border-radius:9px;padding:11px 15px;font-size:13px;font-weight:700;margin:14px 0;display:flex;align-items:center;gap:7px;}
 .kitchen-img{width:100%;height:150px;border-radius:13px;overflow:hidden;margin-bottom:14px;background:rgba(11,31,69,.05);}
@@ -2921,15 +2921,14 @@ function renderStep2() {
     html += '<div class="incl-banner">&#10003; Premium Kitchen Pack upgrade included in your package</div>';
   } else {
     html += '<div class="upsell-card"><div class="upsell-badge">&#11088; Upgrade +&pound;40</div>';
-    html += '<div class="upsell-inner">';
-    html += '<div class="upsell-img" style="overflow:hidden;border-radius:8px;"><img src="' + _PREM_KITCHEN_IMG + '" style="width:100%;height:80px;object-fit:cover;display:block;"></div>';
-    html += '<div>';
+    html += '<div class="upsell-img"><img src="' + _PREM_KITCHEN_IMG + '" alt="Premium Kitchen Pack"></div>';
+    html += '<div class="upsell-content">';
     html += '<div class="upsell-title">Premium Kitchen Pack</div>';
     html += '<div class="upsell-desc">All standard items plus: Oven Glove, Rice Cooker, Bottle Opener, Cheese Grater, Whisk &amp; Pizza Cutter.</div>';
     html += '<div class="upsell-price">+&pound;40</div>';
     html += '<button class="upsell-btn' + (B.premKit ? ' on' : '') + '" onclick="B.premKit=!B.premKit;renderModal()">';
     html += (B.premKit ? '&#10003; Added &mdash; Remove' : '+ Add Premium Kitchen Pack') + '</button>';
-    html += '</div></div></div>';
+    html += '</div></div>';
   }
 
   html += '<div class="bk-nav"><button class="bk-back" onclick="currentStep=1;renderModal()">&#8592; Back</button>';
@@ -3217,15 +3216,14 @@ function renderStep4() {
     html += '</div></div></div>';
   } else {
     html += '<div class="upsell-card"><div class="upsell-badge">&#128218; Add-On +&pound;25</div>';
-    html += '<div class="upsell-inner" style="flex-direction:column;gap:0;">';
-    html += '<img src="placeholder-image-6.jpeg" alt="Stationery Pack" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px;display:block;">';
-    html += '<div>';
+    html += '<div class="upsell-img"><img src="placeholder-image-5.jpeg" alt="Stationery Pack"></div>';
+    html += '<div class="upsell-content">';
     html += '<div class="upsell-title">Stationery Pack</div>';
     html += '<div class="upsell-desc">A4 notepad, A5 notebook, coloured pens, highlighters, sticky notes, plastic folders, pencil and pencil case.</div>';
     html += '<div class="upsell-price">+&pound;25</div>';
     html += '<button class="upsell-btn' + (B.stat ? ' on' : '') + '" onclick="B.stat=!B.stat;renderModal()">';
     html += (B.stat ? '&#10003; Added &mdash; Remove' : '+ Add Stationery Pack') + '</button>';
-    html += '</div></div></div>';
+    html += '</div></div>';
   }
 
   // Toiletries add-on
@@ -3243,15 +3241,14 @@ function renderStep4() {
     html += '</div></div>';
   } else {
     html += '<div class="upsell-card"><div class="upsell-badge">&#129529; Add-On +&pound;25</div>';
-    html += '<div class="upsell-inner" style="flex-direction:column;gap:0;">';
-    html += '<img src="placeholder-image-8.jpeg" alt="Toiletries Pack" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px;display:block;">';
-    html += '<div>';
+    html += '<div class="upsell-img"><img src="placeholder-image-7.jpeg" alt="Toiletries Pack"></div>';
+    html += '<div class="upsell-content">';
     html += '<div class="upsell-title">Essential Toiletries Pack</div>';
     html += '<div class="upsell-desc">4x Toilet Roll, Hand Soap, Toothpaste, Toothbrush, Body Wash, Shampoo &amp; Loofah &mdash; everything you need for your first few days.</div>';
     html += '<div class="upsell-price">+&pound;25</div>';
     html += '<button class="upsell-btn' + (B.toiletries ? ' on' : '') + '" onclick="B.toiletries=!B.toiletries;renderModal()">';
     html += (B.toiletries ? '&#10003; Added &mdash; Remove' : '+ Add Toiletries Pack') + '</button>';
-    html += '</div></div></div>';
+    html += '</div></div>';
   }
 
   // Basic essentials add-on
@@ -3270,15 +3267,14 @@ function renderStep4() {
     html += '</div></div>';
   } else {
     html += '<div class="upsell-card"><div class="upsell-badge">&#9968;&#65039; Add-On +&pound;25</div>';
-    html += '<div class="upsell-inner" style="flex-direction:column;gap:0;">';
-    html += '<img src="placeholder-image-10.jpeg" alt="Basic Essentials Pack" style="width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px;display:block;">';
-    html += '<div>';
+    html += '<div class="upsell-img"><img src="placeholder-image-9.jpeg" alt="Basic Essentials Pack"></div>';
+    html += '<div class="upsell-content">';
     html += '<div class="upsell-title">Basic Essentials Pack</div>';
     html += '<div class="upsell-desc">Bin Bags, UK Plug Adapter, Rubber Gloves, Anti-Bacterial Spray, Cleaning Cloths, Kitchen Sponges &amp; Washing Up Liquid &mdash; the practical bits you always forget.</div>';
     html += '<div class="upsell-price">+&pound;25</div>';
     html += '<button class="upsell-btn' + (B.basics ? ' on' : '') + '" onclick="B.basics=!B.basics;renderModal()">';
     html += (B.basics ? '&#10003; Added &mdash; Remove' : '+ Add Basic Essentials') + '</button>';
-    html += '</div></div></div>';
+    html += '</div></div>';
   }
 
   // Laundry add-on
@@ -3289,15 +3285,14 @@ function renderStep4() {
     html += '</div></div>';
   } else {
     html += '<div class="upsell-card"><div class="upsell-badge">&#129524; Add-On +&pound;25</div>';
-    html += '<div class="upsell-inner">';
-    html += '<div class="upsell-img"><img src="placeholder-image-laundry.jpeg" alt="Laundry Pack" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
-    html += '<div>';
+    html += '<div class="upsell-img"><img src="placeholder-image-laundry.jpeg" alt="Laundry Pack"></div>';
+    html += '<div class="upsell-content">';
     html += '<div class="upsell-title">Essential Laundry Pack</div>';
     html += '<div class="upsell-desc">Mesh Laundry Bag, Washing Pods &amp; Fabric Softener &mdash; the bits nobody thinks to bring.</div>';
-    html += '<div class="upsell-price">+&pound;15</div>';
+    html += '<div class="upsell-price">+&pound;25</div>';
     html += '<button class="upsell-btn' + (B.laundry ? ' on' : '') + '" onclick="B.laundry=!B.laundry;renderModal()">';
     html += (B.laundry ? '&#10003; Added &mdash; Remove' : '+ Add Laundry Pack') + '</button>';
-    html += '</div></div></div>';
+    html += '</div></div>';
   }
 
   // Transport section for international
