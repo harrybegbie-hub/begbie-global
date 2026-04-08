@@ -1642,7 +1642,7 @@ function clearProgress() {
   B.transport=''; B.station=''; B.stationObj=null; B.selectedRoute=null;
   B.privateTaxi=false; B.taxiCost=0; B.taxiFare=0; B.taxiBreakdown=null;
   B.airportTaxi=false; B.airportTaxiCost=0; B.airportTaxiFare=0; B.airportTaxiBreakdown=null;
-  B.name=''; B.email=''; B.phone=''; B.nationality=''; B.accomKnown=null; B.deliverHome=false; B.homeAddress=''; B.homePostcode=''; B.paid=false; B.housingUnlocked=false; B.referral='';
+  B.name=''; B.email=''; B.phone=''; B.nationality=''; B.accomKnown=null; B.deliverHome=false; B.homeAddress=''; B.homePostcode=''; B.studentAddress=''; B.studentPostcode=''; B.paid=false; B.housingUnlocked=false; B.referral='';
   B.university=''; B.postcode=''; B.addressFull=''; B.buildingName=''; B.streetName=''; B.cityName='';
   B.accomLat=null; B.accomLon=null; B.room='';
   B.date=''; B.time=''; B.flight=''; B.airport=''; B.airportObj=null;
@@ -1657,7 +1657,7 @@ function saveProgress() {
   try {
     localStorage.setItem(key, JSON.stringify({
       name: B.name, email: B.email, phone: B.phone,
-      nationality: B.nationality, accomKnown: B.accomKnown, deliverHome: B.deliverHome, homeAddress: B.homeAddress, homePostcode: B.homePostcode, paid: B.paid, housingUnlocked: B.housingUnlocked,
+      nationality: B.nationality, accomKnown: B.accomKnown, deliverHome: B.deliverHome, homeAddress: B.homeAddress, homePostcode: B.homePostcode, studentAddress: B.studentAddress, studentPostcode: B.studentPostcode, paid: B.paid, housingUnlocked: B.housingUnlocked,
       university: B.university, postcode: B.postcode, addressFull: B.addressFull,
       buildingName: B.buildingName, streetName: B.streetName, cityName: B.cityName,
       accomLat: B.accomLat, accomLon: B.accomLon,
@@ -1724,6 +1724,8 @@ function openBooking(pkgId) {
     deliverHome: s.deliverHome || false,
     homeAddress: s.homeAddress || '',
     homePostcode: s.homePostcode || '',
+    studentAddress: s.studentAddress || '',
+    studentPostcode: s.studentPostcode || '',
     // Address — restore
     university:   s.university   || '',
     postcode:     s.postcode     || '',
@@ -2951,7 +2953,22 @@ function renderStep3() {
   // Common nationalities list
   var NATIONALITIES = ['Afghan','Albanian','Algerian','American','Angolan','Argentine','Armenian','Australian','Austrian','Azerbaijani','Bahraini','Bangladeshi','Belarusian','Belgian','Bolivian','Bosnian','Brazilian','British','Bulgarian','Cameroonian','Canadian','Chilean','Chinese','Colombian','Croatian','Cuban','Czech','Danish','Dutch','Ecuadorian','Egyptian','Estonian','Ethiopian','Finnish','French','Georgian','German','Ghanaian','Greek','Guatemalan','Honduran','Hungarian','Indian','Indonesian','Iranian','Iraqi','Irish','Israeli','Italian','Ivorian','Jamaican','Japanese','Jordanian','Kazakhstani','Kenyan','Korean','Kuwaiti','Lebanese','Libyan','Lithuanian','Malaysian','Malian','Mauritian','Mexican','Moroccan','Mozambican','Namibian','Nepali','Nigerian','Norwegian','Omani','Pakistani','Palestinian','Panamanian','Paraguayan','Peruvian','Philippine','Polish','Portuguese','Qatari','Romanian','Russian','Rwandan','Saudi','Senegalese','Serbian','Sierra Leonean','Singaporean','Slovak','Slovenian','Somali','South African','Spanish','Sri Lankan','Sudanese','Swedish','Swiss','Syrian','Taiwanese','Tanzanian','Thai','Trinidadian','Tunisian','Turkish','Ugandan','Ukrainian','Uruguayan','Venezuelan','Vietnamese','Yemeni','Zambian','Zimbabwean'];
 
+  // ── HOW DID YOU HEAR ABOUT US (compulsory, top of step) ──
+  var refOpts = ['Xiaohongshu (RedNote)','WeChat (Weixin)','Douyin','Instagram','LinkedIn','Facebook','Friend or Family','WhatsApp','Google'];
+
   var html = '<div class="bk-title">&#128205; Your Details</div>';
+
+  html += '<div class="bk-fld" style="margin-bottom:18px;">';
+  html += '<label class="bk-lbl">How did you hear about us? *</label>';
+  html += '<select class="bk-sel" style="' + (!B.referral ? 'border-color:rgba(245,166,35,.6);' : '') + '" onchange="B.referral=this.value;renderModal()">';
+  html += '<option value="">Please select…</option>';
+  refOpts.forEach(function(r) {
+    html += '<option value="' + r + '"' + (B.referral === r ? ' selected' : '') + '>' + r + '</option>';
+  });
+  html += '</select>';
+  if (!B.referral) html += '<div style="font-size:11.5px;color:var(--amber);font-weight:600;margin-top:4px;">&#9888; Required — please select an option</div>';
+  html += '</div>';
+
 
   if (isIntl) {
     html += '<p class="bk-sub">Tell us about you and your arrival. We’ve thought of everything, so you don’t have to.</p>';
@@ -3023,25 +3040,24 @@ function renderStep3() {
     var aActive = B.accomKnown === true;
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (aActive ? 'var(--teal)' : 'rgba(11,31,69,.12)') + ';background:' + (aActive ? 'rgba(0,180,160,.06)' : 'white') + ';cursor:pointer;">';
     html += '<input type="radio" name="accomKnown" value="yes" ' + (aActive ? 'checked' : '') + ' onchange="B.accomKnown=true;renderModal()" style="margin-top:2px;accent-color:var(--teal);flex-shrink:0;">';
-    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#10003; Yes, I\'ve secured my accommodation</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">I have an address or room number &mdash; I\'ll enter the details below.</div></div>';
+    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#10003; Yes &mdash; I have my accommodation address</div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">Enter your student address below. You can choose where to deliver separately.</div></div>';
     html += '</label>';
 
     // Option B — needs support
     var bActive = B.accomKnown === false;
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (bActive ? 'var(--amber)' : 'rgba(11,31,69,.12)') + ';background:' + (bActive ? 'rgba(245,166,35,.06)' : 'white') + ';cursor:pointer;">';
-    html += '<input type="radio" name="accomKnown" value="no" ' + (bActive ? 'checked' : '') + ' onchange="B.accomKnown=false;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
-    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#127968; No, I\'d like accommodation support</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">We\'ll help you find and secure suitable student accommodation as part of your package.</div></div>';
+    html += '<input type="radio" name="accomKnown" value="no" ' + (bActive ? 'checked' : '') + ' onchange="B.accomKnown=false;B.deliverHome=false;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
+    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#127968; No &mdash; I\'d like accommodation support</div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">We\'ll email you your personalised student accommodation options after booking.</div></div>';
     html += '</label>';
 
     html += '</div>'; // end radio group
 
-    // If accommodation secured — show address fields
+    // If accommodation secured — show address + optional alternative delivery
     if (B.accomKnown === true) {
       html += '<div style="margin-top:14px;padding:16px;background:rgba(0,180,160,.05);border:1.5px solid rgba(0,180,160,.2);border-radius:12px;">';
-      html += '<div style="font-size:12.5px;font-weight:700;color:var(--teal2);margin-bottom:12px;">&#128205; Accommodation Details</div>';
-
+      html += '<div style="font-size:12.5px;font-weight:700;color:var(--teal2);margin-bottom:12px;">&#128205; Student Accommodation Address</div>';
       html += '<div class="bk-fld" style="margin-bottom:0"><label class="bk-lbl">Accommodation Postcode *</label>';
       html += '<div style="position:relative;padding-bottom:' + (B.addressFull ? '0' : '4px') + '">';
       html += '<input class="bk-in" id="addrInput" type="text" placeholder="Type your postcode e.g. CH1 2AJ" ';
@@ -3053,17 +3069,38 @@ function renderStep3() {
       html += '</div></div>';
       if (!B.addressFull) html += '<div class="bk-note">Type your postcode &rarr; select it &rarr; fill in your street details</div>';
       html += '</div>';
-
       html += '<div class="bk-fld" style="margin-bottom:0;margin-top:10px;"><label class="bk-lbl">Room / Flat Number *</label>';
       html += '<input class="bk-in" type="text" placeholder="e.g. Room 14B or Flat 3" value="' + B.room + '" oninput="B.room=this.value"></div>';
+
+      // Deliver elsewhere checkbox
+      html += '<div style="margin-top:14px;padding:12px 14px;background:rgba(245,166,35,.07);border:1.5px solid rgba(245,166,35,.3);border-radius:10px;">';
+      html += '<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">';
+      html += '<input type="checkbox" ' + (B.deliverHome ? 'checked' : '') + ' onchange="B.deliverHome=this.checked;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
+      html += '<div style="font-size:12.5px;color:var(--navy);font-weight:600;">&#127968; Deliver to a different address instead';
+      html += '<div style="font-size:11.5px;color:var(--gtext);font-weight:400;margin-top:2px;">e.g. a parent\'s home or a friend\'s address. We\'ll still record your student address above.</div>';
+      html += '</div></label>';
+      html += '</div>';
+
+      if (B.deliverHome) {
+        html += '<div style="margin-top:12px;padding:14px 16px;background:white;border:1.5px solid rgba(245,166,35,.4);border-radius:10px;">';
+        html += '<div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:10px;">&#128230; Alternative Delivery Address</div>';
+        html += '<div class="bk-fld" style="margin-bottom:10px"><label class="bk-lbl">Postcode *</label>';
+        html += '<input class="bk-in" type="text" placeholder="e.g. SW1A 1AA" value="' + (B.homePostcode||'') + '" oninput="B.homePostcode=this.value"></div>';
+        html += '<div class="bk-fld" style="margin-bottom:0"><label class="bk-lbl">Full Address *</label>';
+        html += '<input class="bk-in" type="text" placeholder="House number, street, town" value="' + (B.homeAddress||'') + '" oninput="B.homeAddress=this.value"></div>';
+        html += '<div style="margin-top:10px;font-size:11.5px;color:var(--gtext);line-height:1.5;">';
+        html += '&#9432; Make sure someone will be available to receive the delivery, or that a safe place is available.</div>';
+        html += '</div>';
+      }
+
       html += '</div>'; // end address box
     }
 
     // If needs support — show info banner
     if (B.accomKnown === false) {
       html += '<div style="margin-top:12px;padding:14px 16px;background:rgba(245,166,35,.08);border:1.5px solid rgba(245,166,35,.3);border-radius:12px;">';
-      html += '<div style="font-size:13px;color:var(--navy);font-weight:600;margin-bottom:4px;">&#128222; We\'ll be in touch about accommodation</div>';
-      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Once you complete your booking, our team will contact you to discuss accommodation options near your university. We\'ll guide you through the process and help you secure suitable student housing before you arrive.</div>';
+      html += '<div style="font-size:13px;color:var(--navy);font-weight:600;margin-bottom:4px;">&#128222; Accommodation support included</div>';
+      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">We will email you your personalised student accommodation options once your booking is confirmed.</div>';
       html += '</div>';
     }
 
@@ -3101,46 +3138,26 @@ function renderStep3() {
     html += '<label class="bk-lbl">Accommodation *</label>';
     html += '<div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">';
 
-    var aActive = B.accomKnown === true && !B.deliverHome;
+    var aActive = B.accomKnown === true;
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (aActive ? 'var(--teal)' : 'rgba(11,31,69,.12)') + ';background:' + (aActive ? 'rgba(0,180,160,.06)' : 'white') + ';cursor:pointer;">';
-    html += '<input type="radio" name="accomKnown" value="yes" ' + (aActive ? 'checked' : '') + ' onchange="B.accomKnown=true;B.deliverHome=false;renderModal()" style="margin-top:2px;accent-color:var(--teal);flex-shrink:0;">';
-    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#10003; Yes &mdash; deliver to my university accommodation</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">I have my university address &mdash; deliver everything there before I arrive.</div></div>';
-    html += '</label>';
-
-    var cActive = B.accomKnown === true && B.deliverHome === true;
-    html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (cActive ? 'var(--teal)' : 'rgba(11,31,69,.12)') + ';background:' + (cActive ? 'rgba(0,180,160,.06)' : 'white') + ';cursor:pointer;">';
-    html += '<input type="radio" name="accomKnown" value="home" ' + (cActive ? 'checked' : '') + ' onchange="B.accomKnown=true;B.deliverHome=true;renderModal()" style="margin-top:2px;accent-color:var(--teal);flex-shrink:0;">';
-    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#127968; Deliver to my home address before I move</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">I\'d like everything sent to my home so I can pack it and bring it to university myself.</div></div>';
+    html += '<input type="radio" name="accomKnown" value="yes" ' + (aActive ? 'checked' : '') + ' onchange="B.accomKnown=true;renderModal()" style="margin-top:2px;accent-color:var(--teal);flex-shrink:0;">';
+    html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#10003; Yes &mdash; I have my accommodation address</div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">Enter your student address below. You can choose where to deliver separately.</div></div>';
     html += '</label>';
 
     var bActive = B.accomKnown === false;
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (bActive ? 'var(--amber)' : 'rgba(11,31,69,.12)') + ';background:' + (bActive ? 'rgba(245,166,35,.06)' : 'white') + ';cursor:pointer;">';
     html += '<input type="radio" name="accomKnown" value="no" ' + (bActive ? 'checked' : '') + ' onchange="B.accomKnown=false;B.deliverHome=false;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
     html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#9995; I haven\'t sorted accommodation yet</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">We\'ll help you find and secure suitable student accommodation. Unlock your Housing Pack after booking.</div></div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">We\'ll email you personalised accommodation options after booking.</div></div>';
     html += '</label>';
 
     html += '</div>'; // end radio group
 
-    // If delivering to home address
-    if (B.accomKnown === true && B.deliverHome === true) {
+    // If yes — show student address + optional different delivery address
+    if (B.accomKnown === true) {
       html += '<div style="margin-top:14px;padding:16px;background:rgba(0,180,160,.05);border:1.5px solid rgba(0,180,160,.2);border-radius:12px;">';
-      html += '<div style="font-size:12.5px;font-weight:700;color:var(--teal2);margin-bottom:12px;">&#127968; Home Delivery Address</div>';
-      html += '<div class="bk-fld" style="margin-bottom:10px"><label class="bk-lbl">Home Postcode *</label>';
-      html += '<input class="bk-in" type="text" placeholder="e.g. SW1A 1AA" value="' + (B.homePostcode||'') + '" oninput="B.homePostcode=this.value"></div>';
-      html += '<div class="bk-fld" style="margin-bottom:0"><label class="bk-lbl">Full Home Address *</label>';
-      html += '<input class="bk-in" type="text" placeholder="House number, street, town" value="' + (B.homeAddress||'') + '" oninput="B.homeAddress=this.value"></div>';
-      html += '<div style="margin-top:10px;padding:9px 12px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.25);border-radius:8px;font-size:11.5px;color:var(--gtext);line-height:1.5;">';
-      html += '&#9432; We\'ll deliver to this address before your move-in date. Make sure someone will be available to receive the delivery, or that a safe place is available.</div>';
-      html += '</div>';
-    }
-
-    // If yes (uni accom) — show address fields
-    if (B.accomKnown === true && !B.deliverHome) {
-      html += '<div style="margin-top:14px;padding:16px;background:rgba(0,180,160,.05);border:1.5px solid rgba(0,180,160,.2);border-radius:12px;">';
-      html += '<div style="font-size:12.5px;font-weight:700;color:var(--teal2);margin-bottom:12px;">&#128205; Accommodation Details</div>';
+      html += '<div style="font-size:12.5px;font-weight:700;color:var(--teal2);margin-bottom:12px;">&#128205; Student Accommodation Address</div>';
       html += '<div class="bk-fld" style="margin-bottom:0"><label class="bk-lbl">Accommodation Postcode *</label>';
       html += '<div style="position:relative;padding-bottom:' + (B.addressFull ? '0' : '4px') + '">';
       html += '<input class="bk-in" id="addrInput" type="text" placeholder="Type your postcode e.g. CH1 2AJ" ';
@@ -3154,30 +3171,41 @@ function renderStep3() {
       html += '</div>';
       html += '<div class="bk-fld" style="margin-bottom:0;margin-top:10px;"><label class="bk-lbl">Room / Flat Number *</label>';
       html += '<input class="bk-in" type="text" placeholder="e.g. Room 14B or Flat 3" value="' + B.room + '" oninput="B.room=this.value"></div>';
+
+      // Deliver to different address checkbox
+      html += '<div style="margin-top:14px;padding:12px 14px;background:rgba(245,166,35,.07);border:1.5px solid rgba(245,166,35,.3);border-radius:10px;">';
+      html += '<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">';
+      html += '<input type="checkbox" ' + (B.deliverHome ? 'checked' : '') + ' onchange="B.deliverHome=this.checked;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
+      html += '<div style="font-size:12.5px;color:var(--navy);font-weight:600;">&#127968; Deliver to a different address instead';
+      html += '<div style="font-size:11.5px;color:var(--gtext);font-weight:400;margin-top:2px;">e.g. a parent\'s home, a friend already in the UK, or another address. We\'ll still record your student address above.</div>';
+      html += '</div></label>';
       html += '</div>';
+
+      if (B.deliverHome) {
+        html += '<div style="margin-top:12px;padding:14px 16px;background:white;border:1.5px solid rgba(245,166,35,.4);border-radius:10px;">';
+        html += '<div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:10px;">&#128230; Alternative Delivery Address</div>';
+        html += '<div class="bk-fld" style="margin-bottom:10px"><label class="bk-lbl">Postcode *</label>';
+        html += '<input class="bk-in" type="text" placeholder="e.g. SW1A 1AA" value="' + (B.homePostcode||'') + '" oninput="B.homePostcode=this.value"></div>';
+        html += '<div class="bk-fld" style="margin-bottom:0"><label class="bk-lbl">Full Address *</label>';
+        html += '<input class="bk-in" type="text" placeholder="House number, street, town" value="' + (B.homeAddress||'') + '" oninput="B.homeAddress=this.value"></div>';
+        html += '<div style="margin-top:10px;font-size:11.5px;color:var(--gtext);line-height:1.5;">';
+        html += '&#9432; Make sure someone will be available to receive the delivery, or that a safe place is available.</div>';
+        html += '</div>';
+      }
+
+      html += '</div>'; // end student address box
     }
 
     // If no — show housing support teaser
     if (B.accomKnown === false) {
       html += '<div style="margin-top:12px;padding:14px 16px;background:rgba(245,166,35,.08);border:1.5px solid rgba(245,166,35,.3);border-radius:12px;">';
       html += '<div style="font-size:13px;color:var(--navy);font-weight:600;margin-bottom:4px;">&#127968; Housing support included in your package</div>';
-      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">After booking, you\'ll unlock your personalised Housing Pack — a full directory of accommodation providers near your university, a guarantor guide, and access to the Begbie Global team who can clarify any housing concerns or required documents.</div>';
+      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">We will email you your personalised student accommodation options once your booking is confirmed.</div>';
       html += '</div>';
     }
 
     html += '</div>'; // end accommodation bk-fld
   }
-
-  html += '<div class="bk-fld" style="margin-bottom:16px;margin-top:8px;"><label class="bk-lbl">How did you hear about us? *</label>';
-  html += '<select class="bk-sel" onchange="B.referral=this.value">';
-  html += '<option value="">Please select...</option>';
-  html += '<option value="Instagram"' + (B.referral==='Instagram'?' selected':'') + '>Instagram</option>';
-  html += '<option value="Facebook"' + (B.referral==='Facebook'?' selected':'') + '>Facebook</option>';
-  html += '<option value="Google Search"' + (B.referral==='Google Search'?' selected':'') + '>Google Search</option>';
-  html += '<option value="Referred by a friend"' + (B.referral==='Referred by a friend'?' selected':'') + '>Referred by a friend</option>';
-  html += '<option value="University / Student Union"' + (B.referral==='University / Student Union'?' selected':'') + '>University / Student Union</option>';
-  html += '<option value="Other"' + (B.referral==='Other'?' selected':'') + '>Other</option>';
-  html += '</select></div>';
 
   html += '<div class="bk-nav"><button class="bk-back" onclick="currentStep=2;renderModal()">&#8592; Back</button>';
   html += '<button class="bk-next" onclick="goStep3Next()">Continue &rarr; Extras</button></div>';
@@ -3517,12 +3545,12 @@ function renderStep5() {
   html += '<div class="rev-sec"><div class="rev-title">&#128205; Delivery</div>';
   html += '<div class="rev-row"><span>Name</span><span>' + B.name + '</span></div>';
   html += '<div class="rev-row"><span>University</span><span style="text-align:right;font-size:11px">' + B.university + '</span></div>';
+  html += '<div class="rev-row"><span>Student Address</span><span style="text-align:right;font-size:11px">' + (B.addressFull || B.postcode) + (B.room ? ', ' + B.room : '') + '</span></div>';
   if (B.deliverHome) {
-    html += '<div class="rev-row add"><span>Deliver to Home</span><span style="text-align:right;font-size:11px">' + (B.homeAddress||'') + ', ' + (B.homePostcode||'') + '</span></div>';
+    html += '<div class="rev-row add"><span>&#128230; Delivery Address</span><span style="text-align:right;font-size:11px">' + (B.homeAddress||'') + ', ' + (B.homePostcode||'') + '</span></div>';
   } else {
-    html += '<div class="rev-row"><span>Address</span><span style="text-align:right;font-size:11px">' + (B.addressFull || B.postcode) + '</span></div>';
+    html += '<div class="rev-row"><span>&#128230; Delivery Address</span><span style="text-align:right;font-size:11px">Same as student address</span></div>';
   }
-  html += '<div class="rev-row"><span>Room</span><span>' + B.room + '</span></div>';
   html += '<div class="rev-row"><span>Arrival</span><span>' + B.date + (B.time ? ' ' + B.time : '') + '</span></div>';
   if (B.airport) html += '<div class="rev-row"><span>Airport</span><span style="text-align:right;font-size:11px">' + B.airport + '</span></div>';
   if (B.station) html += '<div class="rev-row"><span>Station</span><span style="text-align:right;font-size:11px">' + B.station + '</span></div>';
@@ -5362,10 +5390,12 @@ function goStep3Next() {
   } else {
     if (!B.date) { alert('Please select your arrival date.'); return; }
   }
+  if (!B.referral) { alert('Please tell us how you heard about us.'); return; }
   if (B.accomKnown === null || B.accomKnown === undefined) { alert('Please tell us whether you have secured accommodation.'); return; }
   if (B.accomKnown === true) {
     if (!B.postcode.trim()) { alert('Please search for and confirm your accommodation postcode.'); return; }
     if (!B.room.trim()) { alert('Please enter your room or flat number.'); return; }
+    if (B.deliverHome && (!B.homePostcode.trim() || !B.homeAddress.trim())) { alert('Please enter your alternative delivery address.'); return; }
   }
   if (B.airportTaxi && B.airportObj && B.university) recalcAirportTaxi();
   // Route to housing step if accommodation support needed — for all package types
@@ -5591,6 +5621,9 @@ function sendToAirtable(paymentMethod) {
     'Transport Type': B.transport || '',
     'Transport Route': B.selectedRoute ? B.selectedRoute.label : '',
     'Accommodation Status': B.accomKnown === true ? 'Known' : B.accomKnown === false ? 'Needs support' : 'TBC',
+    'Student Address': B.addressFull ? B.addressFull + (B.room ? ', ' + B.room : '') : '',
+    'Delivery Address': B.deliverHome ? (B.homeAddress + ', ' + B.homePostcode) : (B.addressFull ? B.addressFull + (B.room ? ', ' + B.room : '') : ''),
+    'Deliver To Different Address': B.deliverHome ? 'Yes' : 'No',
     'GP Consent': B.consentGP ? 'Yes' : 'No',
     'Accommodation Contact Consent': B.consentAccom ? 'Yes' : 'No',
     'Transport Booking Consent': B.consentTransport ? 'Yes' : 'No',
@@ -5708,12 +5741,12 @@ function buildOrderSummaryText() {
   if (B.email) lines.push('Email: ' + B.email);
   if (B.phone) lines.push('Phone: ' + B.phone);
   if (B.nationality) lines.push('Nationality: ' + B.nationality);
-  if (B.accomKnown === true && B.addressFull) lines.push('Accommodation: ' + B.addressFull + (B.room ? ', ' + B.room : ''));
-  else if (B.accomKnown === false) lines.push('Accommodation: Needs support \u2014 please contact to assist');
-  else if (B.accomKnown === null && B.addressFull) lines.push('Accommodation: ' + B.addressFull + (B.room ? ', ' + B.room : ''));
+  if (B.accomKnown === true && B.addressFull) lines.push('Student Address: ' + B.addressFull + (B.room ? ', ' + B.room : ''));
+  else if (B.accomKnown === false) lines.push('Accommodation: Needs support \u2014 please email accommodation options');
   lines.push('University: ' + B.university);
-  lines.push('Address: ' + (B.addressFull || B.postcode));
-  if (B.room) lines.push('Room: ' + B.room);
+  if (B.deliverHome && B.homeAddress) lines.push('Delivery Address: ' + B.homeAddress + ', ' + (B.homePostcode||''));
+  else lines.push('Delivery Address: Same as student address');
+  if (B.referral) lines.push('How they heard about us: ' + B.referral);
   lines.push('Arrival: ' + B.date + (B.time ? ' at ' + B.time : ''));
   if (B.airport) lines.push('Airport: ' + B.airport);
   if (B.flight) lines.push('Flight: ' + B.flight);
