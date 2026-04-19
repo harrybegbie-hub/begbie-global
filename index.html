@@ -4057,7 +4057,7 @@ function buildShortDescription() {
   if (B.airportTaxi) addons.push('Airport transfer');
   if (addons.length > 0) parts.push(addons.join(', '));
   if (B.name) parts.push(B.name);
-  return parts.filter(Boolean).join(' \u00b7 ');
+  return parts.filter(Boolean).join(' · ');
 }
 
 function doPayStripe() {
