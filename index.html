@@ -672,7 +672,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
     <li><a href="#" onclick="showView('intl');return false;">International</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="javascript:void(0)" class="nav-cta" onclick="showView('home');setTimeout(function(){var el=document.getElementById('view-home');if(el)el.scrollIntoView({behavior:'smooth'});},100);">Get Your Pack →</a></li>
+    <li><a href="javascript:void(0)" class="nav-cta" onclick="showView('home');setTimeout(function(){var el=document.getElementById('uk-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},150);">Get Your Pack →</a></li>
   </ul>
   <div class="stype-toggle" id="navStypeToggle" style="display:none">
     <button class="stype-btn" id="navBtnUK" onclick="setStudentType('uk')">🇬🇧 UK Student</button>
@@ -683,13 +683,13 @@ footer{background:#060f22;padding:56px 5% 24px;}
   </button>
 </nav>
 <div class="mob-menu" id="mobMenu">
-  <a href="javascript:void(0)" onclick="toggleMenu();showView('home');setTimeout(function(){var el=document.getElementById('view-home');if(el)el.scrollIntoView({behavior:'smooth'});},150);">Packages</a>
+  <a href="javascript:void(0)" onclick="toggleMenu();showView('home');setTimeout(function(){var el=document.getElementById('uk-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},200);">Packages</a>
   <a href="#how" onclick="toggleMenu()">How It Works</a>
   <a href="#why" onclick="toggleMenu()">Why Us</a>
   <a href="#" onclick="showView('intl');toggleMenu();return false;">International</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="javascript:void(0)" class="cta" onclick="toggleMenu();showView('home');setTimeout(function(){var el=document.getElementById('view-home');if(el)el.scrollIntoView({behavior:'smooth'});},150);">Get Your Arrival Pack →</a>
+  <a href="javascript:void(0)" class="cta" onclick="toggleMenu();showView('home');setTimeout(function(){var el=document.getElementById('uk-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},200);">Get Your Arrival Pack →</a>
 </div>
 
 <!-- HERO -->
@@ -1040,7 +1040,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
     </div>
   </div>
 
-  <div class="sec-head" style="margin-top:0;margin-bottom:32px;">
+  <div id="uk-packages" class="sec-head" style="margin-top:0;margin-bottom:32px;">
     <h2 class="sec-title">Choose Your UK Arrival Package</h2>
     <p class="sec-sub">Customise your bedding, choose your colours, and add any upgrades.</p>
   </div>
@@ -1148,7 +1148,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
     </div>
   </div>
 
-  <div class="sec-head" style="margin-top:0;margin-bottom:32px;">
+  <div id="intl-packages" class="sec-head" style="margin-top:0;margin-bottom:32px;">
     <h2 class="sec-title">Choose Your International Package</h2>
     <p class="sec-sub">Start with The Essential Arrival Package, or go all-in with The Complete Arrival Package.</p>
   </div>
@@ -1242,9 +1242,9 @@ footer{background:#060f22;padding:56px 5% 24px;}
     <div>
       <div class="foot-col-title">Packages</div>
       <ul class="foot-links">
-        <li><a href="javascript:void(0)" onclick="openBooking('uk-standard')">UK Complete – £179</a></li>
-        <li><a href="javascript:void(0)" onclick="openBooking('intl-guidance')">Intl. Essential – £179</a></li>
-        <li><a href="javascript:void(0)" onclick="openBooking('intl-full')">Intl. Complete – £299</a></li>
+        <li><a href="javascript:void(0)" onclick="setStudentType('uk');setTimeout(function(){var el=document.getElementById('view-uk');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},150);">UK Complete – £179</a></li>
+        <li><a href="javascript:void(0)" onclick="showView('intl');setTimeout(function(){var el=document.getElementById('intl-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},150);">Intl. Essential – £179</a></li>
+        <li><a href="javascript:void(0)" onclick="showView('intl');setTimeout(function(){var el=document.getElementById('intl-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},150);">Intl. Complete – £299</a></li>
       </ul>
     </div>
     <div>
@@ -1252,7 +1252,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
       <ul class="foot-links">
         <li><a href="mailto:info@begbieglobal.co.uk">&#9993; info@begbieglobal.co.uk</a></li>
         <li><a href="https://wa.me/447377748980">&#128172; 07377 748980</a></li>
-        <li><a href="javascript:void(0)" onclick="showView('home');setTimeout(function(){var el=document.getElementById('view-home');if(el)el.scrollIntoView({behavior:'smooth'});},100);">&#128230; Book a Package</a></li>
+        <li><a href="javascript:void(0)" onclick="showView('home');setTimeout(function(){var el=document.getElementById('uk-packages');if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},150);">&#128230; Book a Package</a></li>
       </ul>
     </div>
     <div>
