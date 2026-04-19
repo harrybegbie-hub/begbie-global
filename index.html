@@ -310,6 +310,9 @@ footer{background:#060f22;padding:56px 5% 24px;}
 .bk-stp-lbl{font-size:10.5px;color:var(--gmid);font-weight:600;white-space:nowrap;}
 .bk-stp.active .bk-stp-lbl{color:var(--navy);}
 .bk-stp.done .bk-stp-lbl{color:var(--teal);}
+.bk-stp.clickable{cursor:pointer;}
+.bk-stp.clickable:hover .bk-stp-dot{background:var(--teal2);border-color:var(--teal2);transform:scale(1.12);}
+.bk-stp.clickable:hover .bk-stp-lbl{color:var(--teal2);text-decoration:underline;}
 .bk-stp-line{flex:1;height:2px;background:#e5e7eb;min-width:16px;max-width:56px;}
 .bk-body{padding:6px 26px 26px;}
 .bk-title{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:5px;}
@@ -855,7 +858,6 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <tr><td>Toiletries Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="cx">&#10007;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td></tr>
           <tr><td>Cleaning Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="cx">&#10007;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td></tr>
           <tr><td>Laundry Pack</td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td><td><span class="cx">&#10007;</span></td><td><span style="color:var(--gmid);font-size:12px;">+&pound;25</span></td></tr>
-          <tr><td>Priority Support</td><td><span class="cx">&#10007;</span></td><td><span class="cx">&#10007;</span></td><td><span class="cx">&#10007;</span></td></tr>
           <tr><td>CV &amp; Employability Support (UK CV, Indeed, visa working rights, interview prep)</td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>GP Registration Guidance</td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td></tr>
           <tr><td>University Enrolment Guidance</td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td><td><span class="ck">&#10003;</span></td></tr>
@@ -1174,7 +1176,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <hr class="pkg-hr">
           <ul class="pkg-feats">
             <li class="pkg-feat">Train or coach ticket from your UK arrival airport to your university city <span style="font-size:11px;color:var(--gmid);">(additional cost may apply on some routes)</span></li>
-            <li class="pkg-feat">Private airport transfer also available &mdash; door-to-door from your arrival airport to your accommodation <span style="font-size:11px;color:var(--gmid);">(priced by route, added at checkout)</span></li>
+            <li class="pkg-feat">Private airport transfer also available: door-to-door from your arrival airport to your accommodation <span style="font-size:11px;color:var(--gmid);">(priced by route, added at checkout)</span></li>
             <li class="pkg-feat">Private taxi from your arrival station to your accommodation included <span style="font-size:11px;color:var(--gmid);">(additional cost may apply on some routes)</span></li>
             <li class="pkg-feat">&#128242; UK e-SIM, connected from the moment you land</li>
             <li class="pkg-feat">University Enrolment Guidance</li>
@@ -1198,7 +1200,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
           <hr class="pkg-hr">
           <ul class="pkg-feats">
             <li class="pkg-feat">Train or coach ticket from your UK arrival airport to your university city <span style="font-size:11px;color:var(--gmid);">(additional cost may apply on some routes)</span></li>
-            <li class="pkg-feat">Private airport transfer also available &mdash; door-to-door from your arrival airport to your accommodation <span style="font-size:11px;color:var(--gmid);">(priced by route, added at checkout)</span></li>
+            <li class="pkg-feat">Private airport transfer also available: door-to-door from your arrival airport to your accommodation <span style="font-size:11px;color:var(--gmid);">(priced by route, added at checkout)</span></li>
             <li class="pkg-feat">Private taxi from your arrival station to your accommodation included <span style="font-size:11px;color:var(--gmid);">(additional cost may apply on some routes)</span></li>
             <li class="pkg-feat">Full Bedding Pack: duvet, duvet cover, pillow, pillowcase, fitted sheet, mattress protector, bath towel, hand towel, face towel &amp; 5x hangers, delivered to your accommodation</li>
             <li class="pkg-feat">Kitchen Starter Pack: saucepan &amp; lid, frying pan (all hobs incl. induction), 16-piece cutlery set, dinner set, chef&#39;s knife, paring knife, bamboo chopping board, scissors, peeler, slotted spoon, serving spoon, wooden spoon, opener, food containers, dish cloth &amp; tea towel</li>
@@ -1217,97 +1219,7 @@ footer{background:#060f22;padding:56px 5% 24px;}
         </div>
       </div>
 
-      <!-- Live price comparison widget -->
-      <div id="intl-compare-live" style="background:var(--navy);border-radius:18px;padding:28px;margin-bottom:8px;">
-        <div style="font-family:'Playfair Display',serif;font-size:18px;color:white;margin-bottom:6px;">&#9889; Your personalised price comparison</div>
-        <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;">Enter your arrival details to see exactly what you&rsquo;d pay with each package, all transport and extras included.</p>
 
-        <!-- Inputs row -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;" class="compare-inputs-grid">
-          <div>
-            <label style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);display:block;margin-bottom:5px;">Arrival Airport</label>
-            <select id="cmp-airport" onchange="cmpAirportChange()" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:white;color:var(--navy);font-family:'Inter',sans-serif;font-size:13px;outline:none;cursor:pointer;">
-              <option value="">Select airport</option>
-              <option>London Heathrow (LHR)</option>
-              <option>London Gatwick (LGW)</option>
-              <option>London Stansted (STN)</option>
-              <option>London Luton (LTN)</option>
-              <option>Manchester (MAN)</option>
-              <option>Birmingham (BHX)</option>
-              <option>Edinburgh (EDI)</option>
-              <option>Glasgow (GLA)</option>
-              <option>Bristol (BRS)</option>
-              <option>Newcastle (NCL)</option>
-              <option>Liverpool John Lennon (LPL)</option>
-              <option>Leeds Bradford (LBA)</option>
-              <option>East Midlands (EMA)</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);display:block;margin-bottom:5px;">University</label>
-            <select id="cmp-uni" onchange="cmpUniChange()" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:white;color:var(--navy);font-family:'Inter',sans-serif;font-size:13px;outline:none;cursor:pointer;">
-              <option value="">Select university</option>
-            </select>
-            <div id="cmp-uni-status" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,.65);min-height:16px;"></div>
-          </div>
-        </div>
-
-        <!-- Arrival date and time -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;" class="compare-inputs-grid">
-          <div>
-            <label style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);display:block;margin-bottom:5px;">Arrival Date <span style="font-weight:400;opacity:.6">(optional, affects taxi rate)</span></label>
-            <input id="cmp-date" type="date" oninput="cmpDateTimeChange()" onchange="cmpDateTimeChange()" min="" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:white;color:var(--navy);font-family:'Inter',sans-serif;font-size:13px;outline:none;box-sizing:border-box;">
-          </div>
-          <div>
-            <label style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);display:block;margin-bottom:5px;">Arrival Time <span style="font-weight:400;opacity:.6">(optional)</span></label>
-            <input id="cmp-time" type="time" oninput="cmpDateTimeChange()" onchange="cmpDateTimeChange()" style="width:100%;padding:10px 12px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:white;color:var(--navy);font-family:'Inter',sans-serif;font-size:13px;outline:none;box-sizing:border-box;">
-            <div id="cmp-tariff-note" style="font-size:11px;margin-top:4px;color:rgba(255,255,255,.5);min-height:16px;"></div>
-          </div>
-        </div>
-
-        <!-- Transport mode toggle -->
-        <div style="margin-bottom:20px;">
-          <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:8px;">How do you want to travel?</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button id="cmp-btn-train" onclick="setCmpMode('train')" class="cmp-mode-btn cmp-mode-active">&#128642; Train</button>
-            <button id="cmp-btn-bus"   onclick="setCmpMode('bus')"   class="cmp-mode-btn">&#128652; Coach</button>
-            <button id="cmp-btn-taxi"  onclick="setCmpMode('taxi')"  class="cmp-mode-btn">&#128661; Private Airport Taxi</button>
-          </div>
-        </div>
-
-        <!-- Optional add-ons -->
-        <div style="margin-bottom:20px;">
-          <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:8px;">Optional add-ons (applies to Standard only):</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-
-            <button id="cmp-add-stat" onclick="toggleCmpAddon('stat')" class="cmp-mode-btn">&#9999;&#65039; Stationery +&pound;25</button>
-            <button id="cmp-add-toil" onclick="toggleCmpAddon('toil')" class="cmp-mode-btn">&#129529; Toiletries +&pound;25</button>
-            <button id="cmp-add-bas" onclick="toggleCmpAddon('bas')" class="cmp-mode-btn">&#9968;&#65039; Cleaning Pack +&pound;25</button>
-            <button id="cmp-add-lau" onclick="toggleCmpAddon('lau')" class="cmp-mode-btn">&#129524; Laundry +&pound;25</button>
-          </div>
-          <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:6px;">These are included in Premium, toggle them on Standard to see what you&rsquo;d actually pay</div>
-        </div>
-
-        <!-- Result panels -->
-        <div id="cmp-result" style="display:none;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="compare-inputs-grid">
-            <div style="background:rgba(255,255,255,.07);border-radius:13px;padding:18px;border:1.5px solid rgba(255,255,255,.1);">
-              <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Essential – £179</div>
-              <div id="cmp-std-rows"></div>
-              <div id="cmp-std-total" style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--amber);border-top:1px solid rgba(255,255,255,.12);padding-top:10px;margin-top:8px;"></div>
-              <button onclick="openBooking('intl-full')" style="width:100%;margin-top:12px;padding:10px;background:white;color:var(--navy);border:none;border-radius:9px;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">Choose Standard &rarr;</button>
-            </div>
-            <div style="background:rgba(0,180,160,.12);border-radius:13px;padding:18px;border:1.5px solid rgba(0,180,160,.3);">
-              <div style="font-size:11px;font-weight:700;color:#4ef0e0;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Complete – £299</div>
-              <div id="cmp-prem-rows"></div>
-              <div id="cmp-prem-total" style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--amber);border-top:1px solid rgba(255,255,255,.12);padding-top:10px;margin-top:8px;"></div>
-              <button onclick="openBooking('intl-premium')" style="width:100%;margin-top:12px;padding:10px;background:var(--teal);color:white;border:none;border-radius:9px;font-family:'Inter',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">Choose Premium &rarr;</button>
-            </div>
-          </div>
-          <div id="cmp-verdict" style="text-align:center;margin-top:16px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;"></div>
-        </div>
-        <div id="cmp-prompt" style="text-align:center;font-size:13px;color:rgba(255,255,255,.4);padding:16px 0;">Select your airport and university to compare real prices</div>
-      </div>
 </div>
 </div>
 
@@ -1539,10 +1451,8 @@ const UK_STATIONS = [
 // ── BOOKING STATE ──
 const PKGS = {
   'uk-standard':   { name:'The Complete Arrival Package',      price:179, type:'uk',   premium:false, deposit:false },
-  'uk-premium':    { name:'UK Home Premium',        price:350, type:'uk',   premium:true,  deposit:false, premKit:true },
   'intl-guidance': { name:'The Essential Arrival Package', price:179, type:'intl', premium:false, deposit:true,  guidanceOnly:true, taxiCredit:40, transportCredit:40 },
   'intl-full':     { name:'The Complete Arrival Package',     price:299, type:'intl', premium:false, deposit:true,  taxiCredit:40, transportCredit:40 },
-  'intl-premium':  { name:'International Premium',  price:550, type:'intl', premium:true,  deposit:true,  taxi:true, taxiCredit:40, transportCredit:40, premKit:true }
 };
 
 const BED_COLOURS = [
@@ -1592,7 +1502,6 @@ const KITCHEN_ADDONS = [
   {id:'saucepan2', name:'Second Saucepan with Lid', price:8, cat:'cooking'},
   {id:'baking_tray', name:'Baking Tray (non-stick)', price:6, cat:'cooking'},
   {id:'cafetiere', name:'Cafeti\u00e8re / French Press', price:10, cat:'cooking'},
-  {id:'dish_rack', name:'Dish Drying Rack', price:10, cat:'kitchen'},
   {id:'colander', name:'Colander (stainless steel)', price:5, cat:'kitchen'},
   {id:'measuring_jug', name:'Measuring Jug (1L)', price:4, cat:'kitchen'},
   {id:'cheese_grater', name:'Cheese Grater', price:5, cat:'kitchen'},
@@ -1601,9 +1510,7 @@ const KITCHEN_ADDONS = [
   {id:'pizza_cutter', name:'Pizza Cutter', price:3, cat:'kitchen'},
   {id:'knife_sharpener', name:'Knife Sharpener', price:5, cat:'kitchen'},
   {id:'cling_foil', name:'Cling Film + Kitchen Foil', price:5, cat:'kitchen'},
-  {id:'door_wedge', name:'Door Wedge', price:3, cat:'room'},
   {id:'water_bottle', name:'Reusable Water Bottle', price:5, cat:'go'},
-  {id:'lunch_box', name:'Lunch Box', price:4, cat:'go'},
   {id:'first_aid', name:'First Aid Kit (compact)', price:6, cat:'justincase'},
   {id:'sewing_kit', name:'Sewing Kit (compact)', price:4, cat:'justincase'}
 ];
@@ -1620,7 +1527,7 @@ var stationSearchResults = [];
 // Keyed per package so Standard/Premium each have their own saved state.
 
 function clearProgress() {
-  var key = (B.pkgId === 'intl-guidance' || B.pkgId === 'intl-full' || B.pkgId === 'intl-premium') ? 'begbie_progress_intl' : 'begbie_progress_' + B.pkgId;
+  var key = (B.pkgId === 'intl-guidance' || B.pkgId === 'intl-full') ? 'begbie_progress_intl' : 'begbie_progress_' + B.pkgId;
   try { localStorage.removeItem(key); } catch(e) {}
   // Reset all fields except pkgId/pkg
   B.bed=''; B.bCol=''; B.tCol='';
@@ -1642,7 +1549,7 @@ function clearProgress() {
 function saveProgress() {
   if (!B.pkgId) return;
   // Both intl packages share the same personal data key
-  var key = (B.pkgId === 'intl-guidance' || B.pkgId === 'intl-full' || B.pkgId === 'intl-premium') ? 'begbie_progress_intl' : 'begbie_progress_' + B.pkgId;
+  var key = (B.pkgId === 'intl-guidance' || B.pkgId === 'intl-full') ? 'begbie_progress_intl' : 'begbie_progress_' + B.pkgId;
   try {
     localStorage.setItem(key, JSON.stringify({
       name: B.name, email: B.email, phone: B.phone,
@@ -1667,7 +1574,7 @@ function saveProgress() {
 }
 
 function loadProgress(pkgId) {
-  var key = (pkgId === 'intl-full' || pkgId === 'intl-guidance' || pkgId === 'intl-premium') ? 'begbie_progress_intl' : 'begbie_progress_' + pkgId;
+  var key = (pkgId === 'intl-full' || pkgId === 'intl-guidance') ? 'begbie_progress_intl' : 'begbie_progress_' + pkgId;
   try { return JSON.parse(localStorage.getItem(key) || '{}'); } catch(e) { return {}; }
 }
 
@@ -1996,7 +1903,7 @@ function recalcTaxi() {
 
 // Both taxi types use the same formula:
 // customer pays = fare + £15 buffer - taxiCredit (min £0)
-// taxiCredit: intl-guidance = £40, intl-full = £40, intl-premium = £80, UK packages = £0
+// taxiCredit: intl-guidance = £40, intl-full = £40, UK packages = £0
 
 function getStationTaxiAllowance() {
   // Kept for legacy reference, not used in price calc
@@ -2772,21 +2679,29 @@ function renderTransportSchedule(type) {
 function stepBar() {
   var isIntl = B.pkg && B.pkg.type === 'intl';
   var isGuidance = B.pkg && B.pkg.guidanceOnly;
-  var steps, stepMap;
+  var steps, stepMap, stepNav;
   if (isGuidance) {
     steps = ['Details','Extras','Review','Consent'];
     stepMap = {3:1, 4:2, 5:3, 6:4};
+    stepNav = {1:3, 2:4, 3:5, 4:6}; // stepBar index -> currentStep
   } else {
     steps = ['Bedding','Kitchen','Details','Extras','Review','Consent'];
     stepMap = {1:1, 2:2, 3:3, 4:4, 5:5, 6:6};
+    stepNav = {1:1, 2:2, 3:3, 4:4, 5:5, 6:6};
   }
   var activeIdx = stepMap[currentStep] || 1;
   var html = '';
   for (var i = 0; i < steps.length; i++) {
     var n = i + 1;
-    var cls = activeIdx === n ? 'active' : (activeIdx > n ? 'done' : '');
-    html += '<div class="bk-stp ' + cls + '">';
-    html += '<div class="bk-stp-dot">' + (activeIdx > n ? '&#10003;' : n) + '</div>';
+    var isDone = activeIdx > n;
+    var isActive = activeIdx === n;
+    var cls = isActive ? 'active' : (isDone ? 'done' : '');
+    // Clickable if already completed
+    var clickTarget = stepNav[n];
+    var clickable = isDone && clickTarget !== undefined;
+    html += '<div class="bk-stp ' + cls + (clickable ? ' clickable' : '') + '"' +
+            (clickable ? ' onclick="currentStep=' + clickTarget + ';renderModal()" title="Go to ' + steps[i] + '"' : '') + '>';
+    html += '<div class="bk-stp-dot">' + (isDone ? '&#10003;' : n) + '</div>';
     html += '<div class="bk-stp-lbl">' + steps[i] + '</div>';
     html += '</div>';
     if (i < steps.length - 1) html += '<div class="bk-stp-line"></div>';
@@ -2909,7 +2824,8 @@ function renderStep1() {
 
 
   html += '<p class="bk-note">* Final colours subject to availability. We will confirm on booking.</p>';
-  html += '<div class="bk-nav"><div></div><button class="bk-next" onclick="goStep1Next()">Continue &rarr; Kitchen</button></div>';
+  var backBtn = B.fromExtrasStep ? '<button class="bk-back" onclick="B.fromExtrasStep=false;currentStep=4;renderModal()">&#8592; Back to Extras</button>' : '<div></div>';
+  html += '<div class="bk-nav">' + backBtn + '<button class="bk-next" onclick="goStep1Next()">Continue &rarr; ' + (B.fromExtrasStep ? 'Confirm' : 'Kitchen') + '</button></div>';
   return html;
 }
 
@@ -2946,7 +2862,32 @@ function renderStep3() {
   }
 
   // Common nationalities list
-  var NATIONALITIES = ['Afghan','Albanian','Algerian','American','Angolan','Argentine','Armenian','Australian','Austrian','Azerbaijani','Bahraini','Bangladeshi','Belarusian','Belgian','Bolivian','Bosnian','Brazilian','British','Bulgarian','Cameroonian','Canadian','Chilean','Chinese','Colombian','Croatian','Cuban','Czech','Danish','Dutch','Ecuadorian','Egyptian','Estonian','Ethiopian','Finnish','French','Georgian','German','Ghanaian','Greek','Guatemalan','Honduran','Hungarian','Indian','Indonesian','Iranian','Iraqi','Irish','Israeli','Italian','Ivorian','Jamaican','Japanese','Jordanian','Kazakhstani','Kenyan','Korean','Kuwaiti','Lebanese','Libyan','Lithuanian','Malaysian','Malian','Mauritian','Mexican','Moroccan','Mozambican','Namibian','Nepali','Nigerian','Norwegian','Omani','Pakistani','Palestinian','Panamanian','Paraguayan','Peruvian','Philippine','Polish','Portuguese','Qatari','Romanian','Russian','Rwandan','Saudi','Senegalese','Serbian','Sierra Leonean','Singaporean','Slovak','Slovenian','Somali','South African','Spanish','Sri Lankan','Sudanese','Swedish','Swiss','Syrian','Taiwanese','Tanzanian','Thai','Trinidadian','Tunisian','Turkish','Ugandan','Ukrainian','Uruguayan','Venezuelan','Vietnamese','Yemeni','Zambian','Zimbabwean'];
+  var NATIONALITIES = [
+  'Afghan','Albanian','Algerian','American','Angolan','Argentine','Armenian','Australian','Austrian','Azerbaijani',
+  'Bahraini','Bangladeshi','Belarusian','Belgian','Belizean','Beninese','Bolivian','Bosnian','Botswanan','Brazilian','British','Bruneian','Bulgarian','Burkina Fasan','Burmese','Burundian',
+  'Cambodian','Cameroonian','Canadian','Cape Verdean','Chilean','Chinese','Colombian','Congolese','Costa Rican','Croatian','Cuban','Cypriot','Czech',
+  'Danish','Dominican',
+  'Ecuadorian','Egyptian','El Salvadoran','Emirati','Eritrean','Estonian','Ethiopian',
+  'Fijian','Filipino','Finnish','French',
+  'Gabonese','Gambian','Georgian','German','Ghanaian','Greek','Guatemalan','Guinean','Guyanese',
+  'Haitian','Honduran','Hong Konger','Hungarian',
+  'Icelandic','Indian','Indonesian','Iranian','Iraqi','Irish','Israeli','Italian','Ivorian',
+  'Jamaican','Japanese','Jordanian',
+  'Kazakhstani','Kenyan','Korean','Kuwaiti','Kyrgyz',
+  'Laotian','Latvian','Lebanese','Liberian','Libyan','Lithuanian','Luxembourgish',
+  'Macanese','Macedonian','Malagasy','Malawian','Malaysian','Maldivian','Malian','Maltese','Mauritian','Mexican','Moldovan','Mongolian','Montenegrin','Moroccan','Mozambican',
+  'Namibian','Nepali','New Zealander','Nicaraguan','Nigerian','Norwegian',
+  'Omani',
+  'Pakistani','Palestinian','Panamanian','Paraguayan','Peruvian','Polish','Portuguese',
+  'Qatari',
+  'Romanian','Russian','Rwandan',
+  'Saudi','Senegalese','Serbian','Sierra Leonean','Singaporean','Slovak','Slovenian','Somali','South African','South Sudanese','Spanish','Sri Lankan','Sudanese','Surinamese','Swedish','Swiss','Syrian',
+  'Taiwanese','Tajik','Tanzanian','Thai','Togolese','Trinidadian','Tunisian','Turkish','Turkmen',
+  'Ugandan','Ukrainian','Uruguayan','Uzbek',
+  'Venezuelan','Vietnamese',
+  'Yemeni',
+  'Zambian','Zimbabwean'
+];
 
   // ── HOW DID YOU HEAR ABOUT US (compulsory, top of step) ──
   var refOpts = ['Xiaohongshu (RedNote)','WeChat (Weixin)','Douyin','Instagram','LinkedIn','Facebook','Friend or Family','WhatsApp','Google'];
@@ -3005,7 +2946,58 @@ function renderStep3() {
     html += '<div class="bk-fld"><label class="bk-lbl">Arrival Date *</label>';
     html += '<input class="bk-in" type="date" value="' + B.date + '" min="' + new Date().toISOString().split('T')[0] + '" oninput="B.date=this.value;if(B.airportTaxi&&B.airportObj&&B.university)recalcAirportTaxi()" onchange="B.date=this.value;if(B.airportTaxi&&B.airportObj&&B.university)recalcAirportTaxi()"></div>';
     html += '<div class="bk-fld"><label class="bk-lbl">Arrival Time *</label>';
-    html += '<input class="bk-in" type="time" value="' + B.time + '" oninput="B.time=this.value;if(B.airportTaxi&&B.airportObj&&B.university)recalcAirportTaxi()" onchange="B.time=this.value;if(B.airportTaxi&&B.airportObj&&B.university)recalcAirportTaxi()"></div>';
+    html += '<select class="bk-in" onchange="B.time=this.value;if(B.airportTaxi&&B.airportObj&&B.university)recalcAirportTaxi()" style="width:100%;padding:9px 12px;border-radius:9px;border:1.5px solid rgba(11,31,69,.12);background:white;color:var(--navy);font-family:Inter,sans-serif;font-size:14px;box-sizing:border-box;">' +
+        '<option value="">' + (B.time ? '' : ' selected') + '>-- Select time --</option>' +
+        '<option value="00:00">' + (B.time === '00:00' ? ' selected' : '') + '>12:00am</option>' +
+        '<option value="00:30">' + (B.time === '00:30' ? ' selected' : '') + '>12:30am</option>' +
+        '<option value="01:00">' + (B.time === '01:00' ? ' selected' : '') + '>1:00am</option>' +
+        '<option value="01:30">' + (B.time === '01:30' ? ' selected' : '') + '>1:30am</option>' +
+        '<option value="02:00">' + (B.time === '02:00' ? ' selected' : '') + '>2:00am</option>' +
+        '<option value="02:30">' + (B.time === '02:30' ? ' selected' : '') + '>2:30am</option>' +
+        '<option value="03:00">' + (B.time === '03:00' ? ' selected' : '') + '>3:00am</option>' +
+        '<option value="03:30">' + (B.time === '03:30' ? ' selected' : '') + '>3:30am</option>' +
+        '<option value="04:00">' + (B.time === '04:00' ? ' selected' : '') + '>4:00am</option>' +
+        '<option value="04:30">' + (B.time === '04:30' ? ' selected' : '') + '>4:30am</option>' +
+        '<option value="05:00">' + (B.time === '05:00' ? ' selected' : '') + '>5:00am</option>' +
+        '<option value="05:30">' + (B.time === '05:30' ? ' selected' : '') + '>5:30am</option>' +
+        '<option value="06:00">' + (B.time === '06:00' ? ' selected' : '') + '>6:00am</option>' +
+        '<option value="06:30">' + (B.time === '06:30' ? ' selected' : '') + '>6:30am</option>' +
+        '<option value="07:00">' + (B.time === '07:00' ? ' selected' : '') + '>7:00am</option>' +
+        '<option value="07:30">' + (B.time === '07:30' ? ' selected' : '') + '>7:30am</option>' +
+        '<option value="08:00">' + (B.time === '08:00' ? ' selected' : '') + '>8:00am</option>' +
+        '<option value="08:30">' + (B.time === '08:30' ? ' selected' : '') + '>8:30am</option>' +
+        '<option value="09:00">' + (B.time === '09:00' ? ' selected' : '') + '>9:00am</option>' +
+        '<option value="09:30">' + (B.time === '09:30' ? ' selected' : '') + '>9:30am</option>' +
+        '<option value="10:00">' + (B.time === '10:00' ? ' selected' : '') + '>10:00am</option>' +
+        '<option value="10:30">' + (B.time === '10:30' ? ' selected' : '') + '>10:30am</option>' +
+        '<option value="11:00">' + (B.time === '11:00' ? ' selected' : '') + '>11:00am</option>' +
+        '<option value="11:30">' + (B.time === '11:30' ? ' selected' : '') + '>11:30am</option>' +
+        '<option value="12:00">' + (B.time === '12:00' ? ' selected' : '') + '>12:00pm</option>' +
+        '<option value="12:30">' + (B.time === '12:30' ? ' selected' : '') + '>12:30pm</option>' +
+        '<option value="13:00">' + (B.time === '13:00' ? ' selected' : '') + '>1:00pm</option>' +
+        '<option value="13:30">' + (B.time === '13:30' ? ' selected' : '') + '>1:30pm</option>' +
+        '<option value="14:00">' + (B.time === '14:00' ? ' selected' : '') + '>2:00pm</option>' +
+        '<option value="14:30">' + (B.time === '14:30' ? ' selected' : '') + '>2:30pm</option>' +
+        '<option value="15:00">' + (B.time === '15:00' ? ' selected' : '') + '>3:00pm</option>' +
+        '<option value="15:30">' + (B.time === '15:30' ? ' selected' : '') + '>3:30pm</option>' +
+        '<option value="16:00">' + (B.time === '16:00' ? ' selected' : '') + '>4:00pm</option>' +
+        '<option value="16:30">' + (B.time === '16:30' ? ' selected' : '') + '>4:30pm</option>' +
+        '<option value="17:00">' + (B.time === '17:00' ? ' selected' : '') + '>5:00pm</option>' +
+        '<option value="17:30">' + (B.time === '17:30' ? ' selected' : '') + '>5:30pm</option>' +
+        '<option value="18:00">' + (B.time === '18:00' ? ' selected' : '') + '>6:00pm</option>' +
+        '<option value="18:30">' + (B.time === '18:30' ? ' selected' : '') + '>6:30pm</option>' +
+        '<option value="19:00">' + (B.time === '19:00' ? ' selected' : '') + '>7:00pm</option>' +
+        '<option value="19:30">' + (B.time === '19:30' ? ' selected' : '') + '>7:30pm</option>' +
+        '<option value="20:00">' + (B.time === '20:00' ? ' selected' : '') + '>8:00pm</option>' +
+        '<option value="20:30">' + (B.time === '20:30' ? ' selected' : '') + '>8:30pm</option>' +
+        '<option value="21:00">' + (B.time === '21:00' ? ' selected' : '') + '>9:00pm</option>' +
+        '<option value="21:30">' + (B.time === '21:30' ? ' selected' : '') + '>9:30pm</option>' +
+        '<option value="22:00">' + (B.time === '22:00' ? ' selected' : '') + '>10:00pm</option>' +
+        '<option value="22:30">' + (B.time === '22:30' ? ' selected' : '') + '>10:30pm</option>' +
+        '<option value="23:00">' + (B.time === '23:00' ? ' selected' : '') + '>11:00pm</option>' +
+        '<option value="23:30">' + (B.time === '23:30' ? ' selected' : '') + '>11:30pm</option>' +
+        '</select>';
+    html += '</div>';
     html += '</div>';
 
     html += '<div style="margin-bottom:10px;padding:9px 12px;background:rgba(11,31,69,.04);border:1px solid rgba(11,31,69,.1);border-radius:9px;font-size:12px;color:var(--gtext);line-height:1.6;">';
@@ -3047,7 +3039,7 @@ function renderStep3() {
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (bActive ? 'var(--amber)' : 'rgba(11,31,69,.12)') + ';background:' + (bActive ? 'rgba(245,166,35,.06)' : 'white') + ';cursor:pointer;">';
     html += '<input type="radio" name="accomKnown" value="no" ' + (bActive ? 'checked' : '') + ' onchange="B.accomKnown=false;B.deliverHome=false;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
     html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#127968; I don\'t have my accommodation address yet</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">No problem — after booking we\'ll email you a housing guide with accommodation options, contact details and guarantor information for your area.</div></div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">No problem. After booking we\'ll email you a housing guide with accommodation options, contact details and guarantor information for your area.</div></div>';
     html += '</label>';
 
     html += '</div>'; // end radio group
@@ -3098,7 +3090,7 @@ function renderStep3() {
     if (B.accomKnown === false) {
       html += '<div style="margin-top:12px;padding:14px 16px;background:rgba(0,180,160,.06);border:1.5px solid rgba(0,180,160,.2);border-radius:12px;">';
       html += '<div style="font-size:13px;color:var(--teal2);font-weight:700;margin-bottom:4px;">&#128231; Housing guide on its way</div>';
-      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Once your booking is confirmed, we\'ll email you a personalised housing guide for your area — including accommodation options, direct contact details, and guarantor information.</div>';
+      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Once your booking is confirmed, we\'ll email you a personalised housing guide for your area, including accommodation options, direct contact details, and guarantor information.</div>';
       html += '</div>';
     }
 
@@ -3125,7 +3117,58 @@ function renderStep3() {
     html += '<div class="bk-fld"><label class="bk-lbl">Arrival Date *</label>';
     html += '<input class="bk-in" type="date" value="' + B.date + '" min="' + new Date().toISOString().split('T')[0] + '" oninput="B.date=this.value" onchange="B.date=this.value"></div>';
     html += '<div class="bk-fld"><label class="bk-lbl">Arrival Time *</label>';
-    html += '<input class="bk-in" type="time" value="' + B.time + '" oninput="B.time=this.value" onchange="B.time=this.value"></div>';
+    html += '<select class="bk-in" onchange="B.time=this.value" style="width:100%;padding:9px 12px;border-radius:9px;border:1.5px solid rgba(11,31,69,.12);background:white;color:var(--navy);font-family:Inter,sans-serif;font-size:14px;box-sizing:border-box;">' +
+        '<option value="">' + (B.time ? '' : ' selected') + '>-- Select time --</option>' +
+        '<option value="00:00">' + (B.time === '00:00' ? ' selected' : '') + '>12:00am</option>' +
+        '<option value="00:30">' + (B.time === '00:30' ? ' selected' : '') + '>12:30am</option>' +
+        '<option value="01:00">' + (B.time === '01:00' ? ' selected' : '') + '>1:00am</option>' +
+        '<option value="01:30">' + (B.time === '01:30' ? ' selected' : '') + '>1:30am</option>' +
+        '<option value="02:00">' + (B.time === '02:00' ? ' selected' : '') + '>2:00am</option>' +
+        '<option value="02:30">' + (B.time === '02:30' ? ' selected' : '') + '>2:30am</option>' +
+        '<option value="03:00">' + (B.time === '03:00' ? ' selected' : '') + '>3:00am</option>' +
+        '<option value="03:30">' + (B.time === '03:30' ? ' selected' : '') + '>3:30am</option>' +
+        '<option value="04:00">' + (B.time === '04:00' ? ' selected' : '') + '>4:00am</option>' +
+        '<option value="04:30">' + (B.time === '04:30' ? ' selected' : '') + '>4:30am</option>' +
+        '<option value="05:00">' + (B.time === '05:00' ? ' selected' : '') + '>5:00am</option>' +
+        '<option value="05:30">' + (B.time === '05:30' ? ' selected' : '') + '>5:30am</option>' +
+        '<option value="06:00">' + (B.time === '06:00' ? ' selected' : '') + '>6:00am</option>' +
+        '<option value="06:30">' + (B.time === '06:30' ? ' selected' : '') + '>6:30am</option>' +
+        '<option value="07:00">' + (B.time === '07:00' ? ' selected' : '') + '>7:00am</option>' +
+        '<option value="07:30">' + (B.time === '07:30' ? ' selected' : '') + '>7:30am</option>' +
+        '<option value="08:00">' + (B.time === '08:00' ? ' selected' : '') + '>8:00am</option>' +
+        '<option value="08:30">' + (B.time === '08:30' ? ' selected' : '') + '>8:30am</option>' +
+        '<option value="09:00">' + (B.time === '09:00' ? ' selected' : '') + '>9:00am</option>' +
+        '<option value="09:30">' + (B.time === '09:30' ? ' selected' : '') + '>9:30am</option>' +
+        '<option value="10:00">' + (B.time === '10:00' ? ' selected' : '') + '>10:00am</option>' +
+        '<option value="10:30">' + (B.time === '10:30' ? ' selected' : '') + '>10:30am</option>' +
+        '<option value="11:00">' + (B.time === '11:00' ? ' selected' : '') + '>11:00am</option>' +
+        '<option value="11:30">' + (B.time === '11:30' ? ' selected' : '') + '>11:30am</option>' +
+        '<option value="12:00">' + (B.time === '12:00' ? ' selected' : '') + '>12:00pm</option>' +
+        '<option value="12:30">' + (B.time === '12:30' ? ' selected' : '') + '>12:30pm</option>' +
+        '<option value="13:00">' + (B.time === '13:00' ? ' selected' : '') + '>1:00pm</option>' +
+        '<option value="13:30">' + (B.time === '13:30' ? ' selected' : '') + '>1:30pm</option>' +
+        '<option value="14:00">' + (B.time === '14:00' ? ' selected' : '') + '>2:00pm</option>' +
+        '<option value="14:30">' + (B.time === '14:30' ? ' selected' : '') + '>2:30pm</option>' +
+        '<option value="15:00">' + (B.time === '15:00' ? ' selected' : '') + '>3:00pm</option>' +
+        '<option value="15:30">' + (B.time === '15:30' ? ' selected' : '') + '>3:30pm</option>' +
+        '<option value="16:00">' + (B.time === '16:00' ? ' selected' : '') + '>4:00pm</option>' +
+        '<option value="16:30">' + (B.time === '16:30' ? ' selected' : '') + '>4:30pm</option>' +
+        '<option value="17:00">' + (B.time === '17:00' ? ' selected' : '') + '>5:00pm</option>' +
+        '<option value="17:30">' + (B.time === '17:30' ? ' selected' : '') + '>5:30pm</option>' +
+        '<option value="18:00">' + (B.time === '18:00' ? ' selected' : '') + '>6:00pm</option>' +
+        '<option value="18:30">' + (B.time === '18:30' ? ' selected' : '') + '>6:30pm</option>' +
+        '<option value="19:00">' + (B.time === '19:00' ? ' selected' : '') + '>7:00pm</option>' +
+        '<option value="19:30">' + (B.time === '19:30' ? ' selected' : '') + '>7:30pm</option>' +
+        '<option value="20:00">' + (B.time === '20:00' ? ' selected' : '') + '>8:00pm</option>' +
+        '<option value="20:30">' + (B.time === '20:30' ? ' selected' : '') + '>8:30pm</option>' +
+        '<option value="21:00">' + (B.time === '21:00' ? ' selected' : '') + '>9:00pm</option>' +
+        '<option value="21:30">' + (B.time === '21:30' ? ' selected' : '') + '>9:30pm</option>' +
+        '<option value="22:00">' + (B.time === '22:00' ? ' selected' : '') + '>10:00pm</option>' +
+        '<option value="22:30">' + (B.time === '22:30' ? ' selected' : '') + '>10:30pm</option>' +
+        '<option value="23:00">' + (B.time === '23:00' ? ' selected' : '') + '>11:00pm</option>' +
+        '<option value="23:30">' + (B.time === '23:30' ? ' selected' : '') + '>11:30pm</option>' +
+        '</select>';
+    html += '</div>';
     html += '</div>';
     html += '<div style="margin-bottom:10px;padding:9px 12px;background:rgba(11,31,69,.04);border:1px solid rgba(11,31,69,.1);border-radius:9px;font-size:12px;color:var(--gtext);line-height:1.6;">';
     html += '&#128336; <strong style="color:var(--navy);">Not sure of your exact date and time?</strong> Just use your best estimate and contact us once confirmed, we&rsquo;ll update everything for you.';
@@ -3150,7 +3193,7 @@ function renderStep3() {
     html += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border-radius:12px;border:2px solid ' + (bActive ? 'var(--amber)' : 'rgba(11,31,69,.12)') + ';background:' + (bActive ? 'rgba(245,166,35,.06)' : 'white') + ';cursor:pointer;">';
     html += '<input type="radio" name="accomKnown" value="no" ' + (bActive ? 'checked' : '') + ' onchange="B.accomKnown=false;B.deliverHome=false;renderModal()" style="margin-top:2px;accent-color:var(--amber);flex-shrink:0;">';
     html += '<div><div style="font-weight:700;font-size:13.5px;color:var(--navy);">&#127968; I don\'t have my accommodation address yet</div>';
-    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">No problem — after booking we\'ll email you a housing guide with accommodation options, contact details and guarantor information for your area.</div></div>';
+    html += '<div style="font-size:12px;color:var(--gtext);margin-top:2px;">No problem. After booking we\'ll email you a housing guide with accommodation options, contact details and guarantor information for your area.</div></div>';
     html += '</label>';
 
     html += '</div>'; // end radio group
@@ -3201,7 +3244,7 @@ function renderStep3() {
     if (B.accomKnown === false) {
       html += '<div style="margin-top:12px;padding:14px 16px;background:rgba(0,180,160,.06);border:1.5px solid rgba(0,180,160,.2);border-radius:12px;">';
       html += '<div style="font-size:13px;color:var(--teal2);font-weight:700;margin-bottom:4px;">&#128231; Housing guide on its way</div>';
-      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Once your booking is confirmed, we\'ll email you a personalised housing guide for your area — including accommodation options, direct contact details, and guarantor information.</div>';
+      html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.6;">Once your booking is confirmed, we\'ll email you a personalised housing guide for your area, including accommodation options, direct contact details, and guarantor information.</div>';
       html += '</div>';
     }
 
@@ -3216,16 +3259,18 @@ function renderStep3() {
 }
 
 function upgradeToComplete() {
-  // Switch package to intl-full, keep all saved details, stay on step 4
+  // Switch package to intl-full, go to step 1 for bedding customisation
   B.pkgId = 'intl-full';
   B.pkg = PKGS['intl-full'];
   B.bed = ''; B.bCol = ''; B.tCol = '';
+  B.fromExtrasStep = true;
+  currentStep = 1;
   renderModal();
 }
 
 function renderStep4() {
   var ip = B.pkg.premium;
-  var isIntlPrem = B.pkgId === 'intl-premium';
+  var isIntlPrem = false;
   var isIntlStd  = B.pkgId === 'intl-full' || B.pkgId === 'intl-guidance';
 
   var html = '<div class="bk-title">&#10024; Extras &amp; Inclusions</div>';
@@ -3239,24 +3284,24 @@ function renderStep4() {
     html += '<div style="position:absolute;top:-11px;left:14px;background:' + (B.addBedding ? 'var(--teal)' : 'var(--navy)') + ';color:white;font-size:10px;font-weight:800;padding:2px 12px;border-radius:50px;">&#128719; BEDDING PACK</div>';
     html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px;">';
     html += '<div style="flex:1;"><div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px;">Full Bedding Pack</div>';
-    html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.55;margin-bottom:10px;">Duvet, duvet cover, pillow, pillowcase, fitted sheet, bath towel, hand towel &amp; face towel &mdash; delivered to your room before you arrive. You\u2019ll choose your size and colour in the next step.</div></div>';
+    html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.55;margin-bottom:10px;">Duvet, duvet cover, pillow, pillowcase, fitted sheet, bath towel, hand towel &amp; face towel. Delivered to your room before you arrive. You\u2019ll choose your size and colour in the next step.</div></div>';
     html += '<div style="text-align:right;flex-shrink:0;"><div style="font-size:20px;font-weight:800;font-family:\'Playfair Display\',serif;color:' + (B.addBedding ? 'var(--teal2)' : 'var(--navy)') + ';">' + (B.addBedding ? '\u2713 Added' : '+\u00a365') + '</div></div></div>';
-    html += '<button onclick="B.addBedding=!B.addBedding;if(B.addBedding){B.bed=\'\';B.bCol=\'\';B.tCol=\'\'}else{B.bed=\'N/A\';B.bCol=\'N/A\';B.tCol=\'N/A\'};renderModal()" style="width:100%;padding:9px;background:' + (B.addBedding ? 'rgba(0,180,160,.12)' : 'var(--navy)') + ';color:' + (B.addBedding ? 'var(--teal2)' : 'white') + ';border:' + (B.addBedding ? '1.5px solid var(--teal)' : 'none') + ';border-radius:9px;font-family:\'Inter\',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">';
-    html += (B.addBedding ? '&#10003; Added &mdash; Remove' : '+ Add Bedding Pack') + '</button></div>';
+    html += '<button onclick="if(!B.addBedding){B.addBedding=true;B.bed=\'\';B.bCol=\'\';B.tCol=\'\';B.fromExtrasStep=true;currentStep=1;renderModal();}else{B.addBedding=false;B.bed=\'N/A\';B.bCol=\'N/A\';B.tCol=\'N/A\';renderModal();}" style="width:100%;padding:9px;background:' + (B.addBedding ? 'rgba(0,180,160,.12)' : 'var(--navy)') + ';color:' + (B.addBedding ? 'var(--teal2)' : 'white') + ';border:' + (B.addBedding ? '1.5px solid var(--teal)' : 'none') + ';border-radius:9px;font-family:\'Inter\',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">';
+    html += (B.addBedding ? '&#10003; Added. Remove' : '+ Add Bedding Pack &rarr; Customise') + '</button></div>';
 
     html += '<div style="background:' + (B.addKitchen ? 'rgba(0,180,160,.06)' : '#f8f9ff') + ';border:2px solid ' + (B.addKitchen ? 'var(--teal)' : 'rgba(11,31,69,.15)') + ';border-radius:14px;padding:16px;margin-bottom:12px;position:relative;">';
     html += '<div style="position:absolute;top:-11px;left:14px;background:' + (B.addKitchen ? 'var(--teal)' : 'var(--navy)') + ';color:white;font-size:10px;font-weight:800;padding:2px 12px;border-radius:50px;">&#127859; KITCHEN PACK</div>';
     html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px;">';
     html += '<div style="flex:1;"><div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px;">Kitchen Starter Pack</div>';
-    html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.55;margin-bottom:10px;">Saucepan, frying pan, 16&#8209;piece cutlery, dinner set, knives, chopping board, scissors, peeler, spoons, food containers, dish cloth &amp; tea towel &mdash; delivered to your room before you arrive.</div></div>';
+    html += '<div style="font-size:12.5px;color:var(--gtext);line-height:1.55;margin-bottom:10px;">Saucepan, frying pan, 16&#8209;piece cutlery, dinner set, knives, chopping board, scissors, peeler, spoons, food containers, dish cloth &amp; tea towel. Delivered to your room before you arrive.</div></div>';
     html += '<div style="text-align:right;flex-shrink:0;"><div style="font-size:20px;font-weight:800;font-family:\'Playfair Display\',serif;color:' + (B.addKitchen ? 'var(--teal2)' : 'var(--navy)') + ';">' + (B.addKitchen ? '\u2713 Added' : '+\u00a365') + '</div></div></div>';
     html += '<button onclick="B.addKitchen=!B.addKitchen;renderModal()" style="width:100%;padding:9px;background:' + (B.addKitchen ? 'rgba(0,180,160,.12)' : 'var(--navy)') + ';color:' + (B.addKitchen ? 'var(--teal2)' : 'white') + ';border:' + (B.addKitchen ? '1.5px solid var(--teal)' : 'none') + ';border-radius:9px;font-family:\'Inter\',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">';
-    html += (B.addKitchen ? '&#10003; Added &mdash; Remove' : '+ Add Kitchen Pack') + '</button></div>';
+    html += (B.addKitchen ? '&#10003; Added. Remove' : '+ Add Kitchen Pack') + '</button></div>';
 
     if (bothAdded) {
       html += '<div style="background:linear-gradient(135deg,#fffbf0,#fff8e5);border:2px solid var(--amber);border-radius:14px;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">';
       html += '<div><div style="font-size:13px;font-weight:800;color:var(--navy);margin-bottom:2px;">&#128161; You\u2019ve added both packs (+\u00a3130)</div>';
-      html += '<div style="font-size:12px;color:var(--gtext);">Upgrading to The Complete Arrival Package is only +\u00a3120 &mdash; save \u00a310 and get everything in one.</div></div>';
+      html += '<div style="font-size:12px;color:var(--gtext);">Upgrading to The Complete Arrival Package is only +\u00a3120. Save \u00a310 and get everything in one.</div></div>';
       html += '<button onclick="upgradeToComplete()" style="background:var(--amber);color:var(--navy);border:none;border-radius:9px;padding:10px 18px;font-family:\'Inter\',sans-serif;font-weight:800;font-size:13px;cursor:pointer;white-space:nowrap;">Upgrade &amp; Save \u00a310 \u2192</button></div>';
     }
     html += '<hr style="border:none;border-top:1px solid rgba(11,31,69,.08);margin:4px 0 18px;">';
@@ -3431,7 +3476,7 @@ function renderStep4() {
         html += '<div style="padding:38px 16px 16px">';
         html += '<div style="display:inline-block;background:var(--amber);color:var(--navy);font-size:10.5px;font-weight:800;padding:3px 13px;border-radius:50px;margin-bottom:10px;">&#128661; Optional Extra</div>';
         html += '<div class="upsell-title">Private Taxi from ' + B.stationObj.name + '</div>';
-        html += '<div class="upsell-desc">Door-to-door from your arrival station straight to your accommodation — no bags on buses, no navigating unfamiliar streets.</div>';
+        html += '<div class="upsell-desc">Door-to-door from your arrival station straight to your accommodation. No bags on buses, no navigating unfamiliar streets.</div>';
 
         if (stCost !== null) {
           if (stCost <= 0) {
@@ -3557,7 +3602,7 @@ function renderStep4() {
 function renderStep5() {
   var p = B.pkg;
   var isIntl = p.type === 'intl';
-  var isIP = B.pkgId === 'intl-premium';
+  var isIP = false;
   var isIS = B.pkgId === 'intl-full' || B.pkgId === 'intl-guidance';
 
   var html = '<div class="bk-title">&#10003; Review &amp; Confirm</div>';
@@ -3732,6 +3777,8 @@ function goStep1Next() {
   if (!B.bed)  { alert('Please select a bed size.'); return; }
   if (!B.bCol) { alert('Please select a bedding colour.'); return; }
   if (!B.tCol) { alert('Please select a towel colour.'); return; }
+  // If we arrived here from the extras step (Essential add-on or upgrade), go back to extras
+  if (B.fromExtrasStep) { B.fromExtrasStep = false; currentStep = 4; renderModal(); return; }
   currentStep = 2; renderModal();
 }
 
@@ -3745,10 +3792,10 @@ function goStep3Next() {
     if (!B.nationality) { alert('Please select your nationality.'); return; }
     if (!B.airport) { alert('Please select your arrival airport.'); return; }
     if (!B.date) { alert('Please select your arrival date.'); return; }
-    if (!B.time) { alert('Please enter your arrival time.'); return; }
+    if (!B.time) { alert('Please select your arrival time from the dropdown.'); return; }
   } else {
     if (!B.date) { alert('Please select your arrival date.'); return; }
-    if (!B.time) { alert('Please enter your arrival time.'); return; }
+    if (!B.time) { alert('Please select your arrival time from the dropdown.'); return; }
   }
   if (!B.referral) { alert('Please tell us how you heard about us.'); return; }
   if (B.accomKnown === null || B.accomKnown === undefined) { alert('Please tell us whether you have secured accommodation.'); return; }
@@ -4629,7 +4676,7 @@ function updateComparison() {
       rows += '<div class="cmp-row"><span>Toiletries Pack</span><span class="cmp-incl">Included \u2713</span></div>';
       rows += '<div class="cmp-row"><span>Cleaning Pack</span><span class="cmp-incl">Included \u2713</span></div>';
       rows += '<div class="cmp-row"><span>Laundry Pack</span><span class="cmp-incl">Included \u2713</span></div>';
-      rows += '<div class="cmp-row"><span>Priority Support</span><span class="cmp-incl">Included \u2713</span></div>';
+
     } else {
 
       if (CMP.addStat) { rows += '<div class="cmp-row"><span>Stationery Pack</span><span class="cmp-extra">+\u00a325</span></div>'; runningExtra += 25; }
