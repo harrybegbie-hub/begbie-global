@@ -14,12 +14,26 @@ exports.handler = async function(event) {
   const stripe = require('stripe')(stripeKey);
  
   try {
-    const { total, orderSummary } = JSON.parse(event.body);
+    const { total, orderSummary, shortDesc } = JSON.parse(event.body);
  
     // Validate total is a sensible number (£50–£2000)
     if (!total || total < 50 || total > 2000) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Invalid total amount' }) };
     }
+ 
+    // Clean one-line description shown to customer on Stripe checkout page
+    // e.g. "The Complete Arrival Package · Bedding Pack, Laundry Pack · James Smith"
+    const displayDescription = shortDesc
+      ? shortDesc.substring(0, 500)
+      : 'Student Arrival Package';
+ 
+    // Full order detail goes into metadata — visible to you in the Stripe dashboard
+    // under each payment, but never shown to the customer.
+    // Stripe metadata values are capped at 500 chars each, so split across two fields.
+    const metaDetail1 = orderSummary ? orderSummary.substring(0, 500) : '';
+    const metaDetail2 = orderSummary && orderSummary.length > 500
+      ? orderSummary.substring(500, 1000)
+      : '';
  
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -29,7 +43,7 @@ exports.handler = async function(event) {
             currency: 'gbp',
             product_data: {
               name: 'Begbie Global — Student Arrival Package',
-              description: orderSummary || 'Student Arrival Package with selected add-ons',
+              description: displayDescription,
             },
             unit_amount: total * 100,
           },
@@ -39,6 +53,10 @@ exports.handler = async function(event) {
       mode: 'payment',
       success_url: 'https://begbieglobal.co.uk?payment=success',
       cancel_url:  'https://begbieglobal.co.uk?payment=cancelled',
+      metadata: {
+        order_detail:   metaDetail1,
+        order_detail_2: metaDetail2,
+      },
     });
  
     return {
@@ -55,3 +73,4 @@ exports.handler = async function(event) {
     };
   }
 };
+ 
