@@ -4039,10 +4039,28 @@ function sendToAirtable(paymentMethod) {
   });
 }
 
+function buildShortDescription() {
+  var parts = [B.pkg ? B.pkg.name : ''];
+  var addons = [];
+  if (B.addBedding && B.pkg && B.pkg.guidanceOnly) addons.push('Bedding Pack');
+  if (B.addKitchen && B.pkg && B.pkg.guidanceOnly) addons.push('Kitchen Pack');
+  if (B.stat) addons.push('Stationery Pack');
+  if (B.toiletries) addons.push('Toiletries Pack');
+  if (B.basics) addons.push('Cleaning Kit');
+  if (B.laundry) addons.push('Laundry Pack');
+  if (B.kitchenAddons && B.kitchenAddons.length > 0) addons.push(B.kitchenAddons.length + ' kitchen extra' + (B.kitchenAddons.length > 1 ? 's' : ''));
+  if (B.privateTaxi) addons.push('Station taxi');
+  if (B.airportTaxi) addons.push('Airport transfer');
+  if (addons.length > 0) parts.push(addons.join(', '));
+  if (B.name) parts.push(B.name);
+  return parts.filter(Boolean).join(' \u00b7 ');
+}
+
 function doPayStripe() {
   sendToAirtable('Stripe - Card');
   var total = getTotal();
   var summary = buildOrderSummaryText();
+  var shortDesc = buildShortDescription();
 
   var btn = document.querySelector('.pay-btn');
   if (btn) { btn.disabled = true; btn.textContent = 'Connecting to Stripe...'; }
@@ -4050,7 +4068,7 @@ function doPayStripe() {
   fetch('/.netlify/functions/create-checkout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ total: total, orderSummary: summary })
+    body: JSON.stringify({ total: total, orderSummary: summary, shortDesc: shortDesc })
   })
   .then(function(res) { return res.json(); })
   .then(function(data) {
