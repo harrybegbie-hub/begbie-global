@@ -1,3 +1,5 @@
+const https = require('https');
+
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -5,26 +7,38 @@ exports.handler = async function(event) {
 
   try {
     var fields = JSON.parse(event.body);
+    var token = process.env.AIRTABLE_TOKEN;
+    var payload = JSON.stringify({ fields: fields });
 
-    var response = await fetch(
-      'https://api.airtable.com/v0/app2lyNSjkuhDAhgK/Orders',
-      {
+    var result = await new Promise(function(resolve, reject) {
+      var options = {
+        hostname: 'api.airtable.com',
+        path: '/v0/app2lyNSjkuhDAhgK/Orders',
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer ' + process.env.AIRTABLE_TOKEN,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fields: fields })
-      }
-    );
+          'Authorization': 'Bearer ' + token,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(payload)
+        }
+      };
 
-    var data = await response.json();
+      var req = https.request(options, function(res) {
+        var body = '';
+        res.on('data', function(chunk) { body += chunk; });
+        res.on('end', function() { resolve({ status: res.statusCode, body: body }); });
+      });
+
+      req.on('error', reject);
+      req.write(payload);
+      req.end();
+    });
 
     return {
       statusCode: 200,
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ success: true, id: data.id })
+      body: JSON.stringify({ success: true, airtable: result.status })
     };
+
   } catch (err) {
     return {
       statusCode: 500,
