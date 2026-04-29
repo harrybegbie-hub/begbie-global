@@ -36,7 +36,7 @@ exports.handler = async function(event) {
     return {
       statusCode: 200,
       headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ success: true, airtable: result.status })
+      body: JSON.stringify({ success: true, airtable: result.status, response: result.body })
     };
 
   } catch (err) {
